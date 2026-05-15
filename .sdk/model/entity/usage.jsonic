@@ -1,0 +1,63 @@
+# Entity: usage
+
+main: kit: entity: usage: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "account_level"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "current_usage"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "monthly_limit"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "next_reset"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "remaining_request"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "usage_percentage"
+      req: true
+      type: "`$NUMBER`"
+    }
+  ]
+
+  name: "usage"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/api/usage"
+          parts: [
+            "api"
+            "usage"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

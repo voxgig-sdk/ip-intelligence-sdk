@@ -1,0 +1,420 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "IP Intelligence API",
+    "description": "The addr.zone API provides fast and precise IP intelligence, allowing developers to analyze visitor origins and identify network types, such as mobile networks, datacenters, VPNs, and proxies. It offers simple JSON responses with high daily usage limits, making it ideal for integration into various applications.",
+    "version": "1.1.0",
+    "contact": {
+      "url": "https://addr.zone/docs"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://addr.zone",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/{ip}": {
+      "get": {
+        "summary": "Get IP intelligence data",
+        "description": "Retrieves comprehensive intelligence data for a specified IP address, including trust score, classifications, geographic information, and ASN details. Supports both anonymous access (175 requests/day) and authenticated access (100K+ requests/month) using API keys.",
+        "operationId": "getIpIntelligence",
+        "tags": [
+          "IP Intelligence"
+        ],
+        "parameters": [
+          {
+            "name": "ip",
+            "in": "path",
+            "required": true,
+            "description": "The IP address to analyze (e.g., 1.1.1.1)",
+            "schema": {
+              "type": "string",
+              "format": "ipv4",
+              "example": "1.1.1.1"
+            }
+          },
+          {
+            "name": "api_key",
+            "in": "query",
+            "required": false,
+            "description": "API key for authentication (alternative to X-API-Key header). API keys start with 'zone_' and are 32 characters long.",
+            "schema": {
+              "type": "string",
+              "pattern": "^zone_.{28}$",
+              "example": "zone_your_api_key_here"
+            }
+          }
+        ],
+        "security": [
+          {},
+          {
+            "ApiKeyAuth": []
+          },
+          {
+            "ApiKeyQuery": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with IP intelligence data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IpIntelligenceResponse"
+                },
+                "examples": {
+                  "datacenter": {
+                    "summary": "Datacenter IP (Cloudflare)",
+                    "value": {
+                      "ip": "1.1.1.1",
+                      "trust_score": 8,
+                      "is": [
+                        "datacenter"
+                      ],
+                      "country_code": "US",
+                      "country_name": "United States",
+                      "asn_id": 13335,
+                      "asn_handle": "CLOUDFLARENET",
+                      "metadata": {
+                        "datacenter": "CLOUDFLARENET"
+                      }
+                    }
+                  },
+                  "mobile": {
+                    "summary": "Mobile network (Vodafone UK)",
+                    "value": {
+                      "ip": "42.113.0.1",
+                      "trust_score": 9,
+                      "is": [
+                        "mobile"
+                      ],
+                      "country_code": "GB",
+                      "country_name": "United Kingdom",
+                      "asn_id": 15440,
+                      "asn_handle": "VODAFONE-UK"
+                    }
+                  },
+                  "tor_exit": {
+                    "summary": "Tor exit node",
+                    "value": {
+                      "ip": "80.67.167.81",
+                      "trust_score": 0,
+                      "is": [
+                        "malicious",
+                        "tor",
+                        "datacenter"
+                      ],
+                      "country_code": "FR",
+                      "country_name": "France",
+                      "asn_id": 2027,
+                      "asn_handle": "MilkyWan",
+                      "metadata": {
+                        "tor": {
+                          "node_id": "0DC16FEAA5A5E27A9740....",
+                          "version": "0.4.8.17",
+                          "name": "arecoque5"
+                        },
+                        "datacenter": "MilkyWan"
+                      },
+                      "malicious": {
+                        "ipsum_blacklists": 4,
+                        "sources": [
+                          "abuseipdb",
+                          "ipsum"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid IP address format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - invalid API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests - rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/usage": {
+      "get": {
+        "summary": "Get API usage statistics",
+        "description": "Retrieves comprehensive usage statistics for the authenticated API key, including current usage, monthly limits, and remaining requests.",
+        "operationId": "getUsageStats",
+        "tags": [
+          "Usage"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with usage statistics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsageResponse"
+                },
+                "example": {
+                  "account_level": "developer",
+                  "current_usage": 5000,
+                  "monthly_limit": 100000,
+                  "usage_percentage": 5,
+                  "remaining_requests": 95000,
+                  "next_reset": "2025-02-01T00:00:00Z"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - API key required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "API key authentication via header (recommended method). API keys start with 'zone_' and are 32 characters long."
+      },
+      "ApiKeyQuery": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "api_key",
+        "description": "API key authentication via query parameter (alternative method)."
+      }
+    },
+    "schemas": {
+      "IpIntelligenceResponse": {
+        "type": "object",
+        "required": [
+          "ip",
+          "trust_score",
+          "is",
+          "country_code",
+          "country_name",
+          "asn_id",
+          "asn_handle"
+        ],
+        "properties": {
+          "ip": {
+            "type": "string",
+            "format": "ipv4",
+            "description": "The IP address that was analyzed",
+            "example": "1.1.1.1"
+          },
+          "trust_score": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10,
+            "description": "Trust rating from 0-10, where 10 is most trustworthy. Scores 9-10 represent actual human users, 6-8 automated/infrastructure, 0-5 low trust/suspicious actors.",
+            "example": 8
+          },
+          "is": {
+            "type": "array",
+            "description": "Array of classifications for this IP. Possible values: datacenter, mobile, residential, vpn, proxy, tor, malicious, crawler, education, research, cloud, nsp, scanner, monitoring, etc. Multiple classifications are possible.",
+            "items": {
+              "type": "string",
+              "enum": [
+                "datacenter",
+                "mobile",
+                "residential",
+                "vpn",
+                "proxy",
+                "tor",
+                "malicious",
+                "crawler",
+                "education",
+                "research",
+                "cloud",
+                "nsp",
+                "scanner",
+                "monitoring"
+              ]
+            },
+            "example": [
+              "datacenter"
+            ]
+          },
+          "country_code": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 2,
+            "description": "Two-letter ISO country code",
+            "example": "US"
+          },
+          "country_name": {
+            "type": "string",
+            "description": "Full country name",
+            "example": "United States"
+          },
+          "asn_id": {
+            "type": "integer",
+            "description": "Autonomous System Number of the network operator",
+            "example": 13335
+          },
+          "asn_handle": {
+            "type": "string",
+            "description": "Network operator name/handle",
+            "example": "CLOUDFLARENET"
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Additional contextual information about the IP, structure varies based on classifications",
+            "additionalProperties": true,
+            "properties": {
+              "datacenter": {
+                "type": "string",
+                "description": "Datacenter or hosting provider name"
+              },
+              "tor": {
+                "type": "object",
+                "description": "Tor node information if IP is a Tor exit node",
+                "properties": {
+                  "node_id": {
+                    "type": "string",
+                    "description": "Tor node identifier"
+                  },
+                  "version": {
+                    "type": "string",
+                    "description": "Tor software version"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "Tor node name"
+                  }
+                }
+              }
+            }
+          },
+          "malicious": {
+            "type": "object",
+            "description": "Information about malicious activity if IP is flagged",
+            "properties": {
+              "ipsum_blacklists": {
+                "type": "integer",
+                "description": "Number of blacklists the IP appears on"
+              },
+              "sources": {
+                "type": "array",
+                "description": "Sources reporting this IP as malicious",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "UsageResponse": {
+        "type": "object",
+        "required": [
+          "account_level",
+          "current_usage",
+          "monthly_limit",
+          "usage_percentage",
+          "remaining_requests",
+          "next_reset"
+        ],
+        "properties": {
+          "account_level": {
+            "type": "string",
+            "description": "Account tier level",
+            "example": "developer"
+          },
+          "current_usage": {
+            "type": "integer",
+            "description": "Number of API requests used in the current billing period",
+            "example": 5000
+          },
+          "monthly_limit": {
+            "type": "integer",
+            "description": "Total monthly request limit for this account",
+            "example": 100000
+          },
+          "usage_percentage": {
+            "type": "number",
+            "format": "float",
+            "description": "Percentage of monthly limit used",
+            "example": 5
+          },
+          "remaining_requests": {
+            "type": "integer",
+            "description": "Number of requests remaining in the current billing period",
+            "example": 95000
+          },
+          "next_reset": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO 8601 timestamp when the usage counter resets",
+            "example": "2025-02-01T00:00:00Z"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message describing what went wrong"
+          },
+          "code": {
+            "type": "string",
+            "description": "Error code for programmatic handling"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "IP Intelligence",
+      "description": "Endpoints for retrieving IP intelligence data"
+    },
+    {
+      "name": "Usage",
+      "description": "Endpoints for monitoring API usage and quota"
+    }
+  ]
+}

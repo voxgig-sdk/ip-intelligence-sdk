@@ -1,0 +1,54 @@
+{
+  "existing": {
+    "api": {
+      "API00": {
+        "asn_handle": "s5a",
+        "asn_id": "ASN01",
+        "country_code": "s5c",
+        "country_name": "s5d",
+        "ip": "s5e",
+        "is": [],
+        "malicious": {},
+        "metadata": {},
+        "trust_score": "s62"
+      },
+      "API01": {
+        "asn_handle": "sb4",
+        "asn_id": "ASN01",
+        "country_code": "sb6",
+        "country_name": "sb7",
+        "ip": "sb8",
+        "is": [],
+        "malicious": {},
+        "metadata": {},
+        "trust_score": "sbc"
+      },
+      "API02": {
+        "asn_handle": "s10e",
+        "asn_id": "ASN01",
+        "country_code": "s110",
+        "country_name": "s111",
+        "ip": "s112",
+        "is": [],
+        "malicious": {},
+        "metadata": {},
+        "trust_score": "s116"
+      }
+    }
+  },
+  "new": {
+    "api": {
+      "api_ref01": {
+        "asn_handle": "s168",
+        "asn_id": "ASN01",
+        "country_code": "s16a",
+        "country_name": "s16b",
+        "ip": "s16c",
+        "is": [],
+        "malicious": {},
+        "metadata": {},
+        "trust_score": "s170"
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://addr.zone/docs"
+      }
+      description: "The addr.zone API provides fast and precise IP intelligence, allowing developers to analyze visitor origins and identify network types, such as mobile networks, datacenters, VPNs, and proxies. It offers simple JSON responses with high daily usage limits, making it ideal for integration into various applications."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://addr.zone"
+        }
+      ]
+      title: "IP Intelligence API"
+      version: "1.1.0"
+    }
+  }
+}
+
+}
