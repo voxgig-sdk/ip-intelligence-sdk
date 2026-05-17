@@ -7,7 +7,8 @@
         "monthly_limit": "s3e",
         "next_reset": "s3f",
         "remaining_request": "s40",
-        "usage_percentage": 65
+        "usage_percentage": 65,
+        "id": "USAGE00"
       },
       "USAGE01": {
         "account_level": "s78",
@@ -15,7 +16,8 @@
         "monthly_limit": "s7a",
         "next_reset": "s7b",
         "remaining_request": "s7c",
-        "usage_percentage": 125
+        "usage_percentage": 125,
+        "id": "USAGE01"
       },
       "USAGE02": {
         "account_level": "sb4",
@@ -23,7 +25,8 @@
         "monthly_limit": "sb6",
         "next_reset": "sb7",
         "remaining_request": "sb8",
-        "usage_percentage": 185
+        "usage_percentage": 185,
+        "id": "USAGE02"
       }
     }
   },

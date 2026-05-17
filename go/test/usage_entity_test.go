@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/ip-intelligence-sdk"
-	"github.com/voxgig-sdk/ip-intelligence-sdk/core"
+	sdk "github.com/voxgig-sdk/ip-intelligence-sdk/go"
+	"github.com/voxgig-sdk/ip-intelligence-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/ip-intelligence-sdk/go/utility/struct"
 )
 
 func TestUsageEntity(t *testing.T) {

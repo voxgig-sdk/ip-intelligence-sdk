@@ -10,7 +10,8 @@
         "is": [],
         "malicious": {},
         "metadata": {},
-        "trust_score": "s62"
+        "trust_score": "s62",
+        "id": "API00"
       },
       "API01": {
         "asn_handle": "sb4",
@@ -21,7 +22,8 @@
         "is": [],
         "malicious": {},
         "metadata": {},
-        "trust_score": "sbc"
+        "trust_score": "sbc",
+        "id": "API01"
       },
       "API02": {
         "asn_handle": "s10e",
@@ -32,7 +34,8 @@
         "is": [],
         "malicious": {},
         "metadata": {},
-        "trust_score": "s116"
+        "trust_score": "s116",
+        "id": "API02"
       }
     }
   },

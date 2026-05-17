@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/ip-intelligence-sdk/core"
+	"github.com/voxgig-sdk/ip-intelligence-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/ip-intelligence-sdk/go/utility/struct"
 )
 
 type UsageEntity struct {

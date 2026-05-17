@@ -3,7 +3,7 @@ package utility
 import (
 	"reflect"
 
-	"github.com/voxgig-sdk/ip-intelligence-sdk/core"
+	"github.com/voxgig-sdk/ip-intelligence-sdk/go/core"
 )
 
 func featureHookUtil(ctx *core.Context, name string) {

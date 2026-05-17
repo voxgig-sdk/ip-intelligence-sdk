@@ -1,10 +1,10 @@
 package voxgigipintelligencesdk
 
 import (
-	"github.com/voxgig-sdk/ip-intelligence-sdk/core"
-	"github.com/voxgig-sdk/ip-intelligence-sdk/entity"
-	"github.com/voxgig-sdk/ip-intelligence-sdk/feature"
-	_ "github.com/voxgig-sdk/ip-intelligence-sdk/utility"
+	"github.com/voxgig-sdk/ip-intelligence-sdk/go/core"
+	"github.com/voxgig-sdk/ip-intelligence-sdk/go/entity"
+	"github.com/voxgig-sdk/ip-intelligence-sdk/go/feature"
+	_ "github.com/voxgig-sdk/ip-intelligence-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

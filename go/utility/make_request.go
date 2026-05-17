@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/ip-intelligence-sdk/core"
+import "github.com/voxgig-sdk/ip-intelligence-sdk/go/core"
 
 func makeRequestUtil(ctx *core.Context) (*core.Response, error) {
 	if ctx.Out["request"] != nil {

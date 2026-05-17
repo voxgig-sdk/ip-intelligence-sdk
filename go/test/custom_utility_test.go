@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/ip-intelligence-sdk"
+	sdk "github.com/voxgig-sdk/ip-intelligence-sdk/go"
 )
 
 func TestCustomUtility(t *testing.T) {

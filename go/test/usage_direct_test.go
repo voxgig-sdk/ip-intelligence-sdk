@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/ip-intelligence-sdk"
-	"github.com/voxgig-sdk/ip-intelligence-sdk/core"
+	sdk "github.com/voxgig-sdk/ip-intelligence-sdk/go"
+	"github.com/voxgig-sdk/ip-intelligence-sdk/go/core"
 )
 
 func TestUsageDirect(t *testing.T) {
