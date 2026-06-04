@@ -117,7 +117,6 @@ func usageBasicSetup(extra map[string]any) *entityTestSetup {
 		"IPINTELLIGENCE_TEST_USAGE_ENTID": idmap,
 		"IPINTELLIGENCE_TEST_LIVE":      "FALSE",
 		"IPINTELLIGENCE_TEST_EXPLAIN":   "FALSE",
-		"IPINTELLIGENCE_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["IPINTELLIGENCE_TEST_USAGE_ENTID"])
@@ -128,7 +127,6 @@ func usageBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["IPINTELLIGENCE_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["IPINTELLIGENCE_APIKEY"],
 			},
 			extra,
 		})

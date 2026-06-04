@@ -15,9 +15,6 @@ module IpIntelligenceConfig
       },
       "options" => {
         "base" => "https://addr.zone",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

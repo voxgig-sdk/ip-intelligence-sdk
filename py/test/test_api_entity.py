@@ -91,7 +91,6 @@ def _api_basic_setup(extra):
         "IPINTELLIGENCE_TEST_API_ENTID": idmap,
         "IPINTELLIGENCE_TEST_LIVE": "FALSE",
         "IPINTELLIGENCE_TEST_EXPLAIN": "FALSE",
-        "IPINTELLIGENCE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +101,6 @@ def _api_basic_setup(extra):
     if env.get("IPINTELLIGENCE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("IPINTELLIGENCE_APIKEY"),
             },
             extra or {},
         ])

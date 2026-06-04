@@ -85,7 +85,6 @@ function usage_basic_setup($extra)
         "IPINTELLIGENCE_TEST_USAGE_ENTID" => $idmap,
         "IPINTELLIGENCE_TEST_LIVE" => "FALSE",
         "IPINTELLIGENCE_TEST_EXPLAIN" => "FALSE",
-        "IPINTELLIGENCE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +96,6 @@ function usage_basic_setup($extra)
     if ($env["IPINTELLIGENCE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["IPINTELLIGENCE_APIKEY"],
             ],
             $extra ?? [],
         ]);

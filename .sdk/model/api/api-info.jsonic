@@ -16,8 +16,23 @@ main: {
       ]
       title: "IP Intelligence API"
       version: "1.1.0"
+      tagline: "Classify any IP address by network type, including mobile, datacenter, VPN, and proxy detection"
+      homepage: "https://addr.zone"
+      docs_url: "https://addr.zone/docs"
+      about_md: `[addr.zone](https://addr.zone) is an IP intelligence service that analyzes visitor origins and returns information about the network behind a given IP address. The API focuses on practical classification signals such as whether an address belongs to a mobile carrier, a datacenter, a VPN provider, or a proxy.
+
+What you get from the API:
+
+- IP classification and network metadata for any IPv4/IPv6 address
+- Network type identification (mobile, datacenter, VPN, proxy)
+- Simple JSON responses suited to embedding in lightweight clients
+
+Requests follow a path-style pattern such as \`GET https://addr.zone/api/1.1.1.1\`. The catalogue listing on Free Public APIs notes generous daily usage limits and a JSON response format; CORS is disabled, so calls are best made from a server-side runtime.`
+      entity_desc: {
+        api: "Catch-all grouping for the IP lookup operation exposed at `/api/{ip}`, which returns network and classification data for a single address."
+        usage: "Operational metadata around the lookup endpoint, such as request accounting against the service's daily usage limits."
+      }
+      auth: false
     }
   }
-}
-
 }

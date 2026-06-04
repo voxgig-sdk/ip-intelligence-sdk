@@ -91,7 +91,6 @@ function api_basic_setup(extra)
     ["IPINTELLIGENCE_TEST_API_ENTID"] = idmap,
     ["IPINTELLIGENCE_TEST_LIVE"] = "FALSE",
     ["IPINTELLIGENCE_TEST_EXPLAIN"] = "FALSE",
-    ["IPINTELLIGENCE_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ function api_basic_setup(extra)
   if env["IPINTELLIGENCE_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["IPINTELLIGENCE_APIKEY"],
       },
       extra or {},
     })

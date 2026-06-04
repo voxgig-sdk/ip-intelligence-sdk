@@ -99,14 +99,12 @@ func usageDirectSetup(mockres any) *usageDirectSetupResult {
 	env := envOverride(map[string]any{
 		"IPINTELLIGENCE_TEST_USAGE_ENTID": map[string]any{},
 		"IPINTELLIGENCE_TEST_LIVE":    "FALSE",
-		"IPINTELLIGENCE_APIKEY":       "NONE",
 	})
 
 	live := env["IPINTELLIGENCE_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["IPINTELLIGENCE_APIKEY"],
 		}
 		client := sdk.NewIpIntelligenceSDK(mergedOpts)
 

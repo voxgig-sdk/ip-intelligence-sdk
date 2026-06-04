@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'IP_INTELLIGENCE_TEST_USAGE_ENTID': idmap,
     'IP_INTELLIGENCE_TEST_LIVE': 'FALSE',
     'IP_INTELLIGENCE_TEST_EXPLAIN': 'FALSE',
-    'IP_INTELLIGENCE_APIKEY': 'NONE',
   })
 
   idmap = env['IP_INTELLIGENCE_TEST_USAGE_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new IpIntelligenceSDK(merge([
       {
-        apikey: env.IP_INTELLIGENCE_APIKEY,
       },
       extra
     ]))
