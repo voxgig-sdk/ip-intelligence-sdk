@@ -10,7 +10,7 @@ The Python SDK for the IpIntelligence API — an entity-oriented client followin
 
 ## Install
 ```bash
-pip install ip-intelligence-sdk
+pip install voxgig-sdk-ip-intelligence
 ```
 
 Or install from source:

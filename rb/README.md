@@ -10,13 +10,13 @@ The Ruby SDK for the IpIntelligence API — an entity-oriented client using idio
 
 ## Install
 ```bash
-gem install ip-intelligence-sdk
+gem install voxgig-sdk-ip-intelligence
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "ip-intelligence-sdk"
+gem "voxgig-sdk-ip-intelligence"
 ```
 
 Then run:

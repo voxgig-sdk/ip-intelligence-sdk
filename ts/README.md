@@ -10,7 +10,7 @@ The TypeScript SDK for the IpIntelligence API — a type-safe, entity-oriented c
 
 ## Install
 ```bash
-npm install ip-intelligence
+npm install @voxgig-sdk/ip-intelligence
 ```
 ## Tutorial: your first API call
 

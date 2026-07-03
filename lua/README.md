@@ -10,7 +10,7 @@ The Lua SDK for the IpIntelligence API — an entity-oriented client using Lua c
 
 ## Install
 ```bash
-luarocks install ip-intelligence-sdk
+luarocks install voxgig-sdk-ip-intelligence
 ```
 
 If the module is not yet published, add the source directory to

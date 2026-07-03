@@ -10,7 +10,7 @@ The PHP SDK for the IpIntelligence API — an entity-oriented client using PHP c
 
 ## Install
 ```bash
-composer require voxgig/ip-intelligence-sdk
+composer require voxgig-sdk/ip-intelligence
 ```
 
 
