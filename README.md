@@ -1,20 +1,8 @@
 # IpIntelligence SDK
 
-Classify any IP address by network type, including mobile, datacenter, VPN, and proxy detection
+IP Intelligence API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About IP Intelligence API
-
-[addr.zone](https://addr.zone) is an IP intelligence service that analyzes visitor origins and returns information about the network behind a given IP address. The API focuses on practical classification signals such as whether an address belongs to a mobile carrier, a datacenter, a VPN provider, or a proxy.
-
-What you get from the API:
-
-- IP classification and network metadata for any IPv4/IPv6 address
-- Network type identification (mobile, datacenter, VPN, proxy)
-- Simple JSON responses suited to embedding in lightweight clients
-
-Requests follow a path-style pattern such as `GET https://addr.zone/api/1.1.1.1`. The catalogue listing on Free Public APIs notes generous daily usage limits and a JSON response format; CORS is disabled, so calls are best made from a server-side runtime.
 
 ## Try it
 
@@ -48,27 +36,31 @@ gem install ip-intelligence-sdk
 luarocks install ip-intelligence-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { IpIntelligenceSDK } from 'ip-intelligence'
 
-const client = new IpIntelligenceSDK({})
+const client = new IpIntelligenceSDK({
+  apikey: process.env.IP-INTELLIGENCE_APIKEY,
+})
 
+// Load api data
+const api = await client.Api().load({})
+console.log(api.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -98,8 +90,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Api** | Catch-all grouping for the IP lookup operation exposed at `/api/{ip}`, which returns network and classification data for a single address. | `/api/{ip}` |
-| **Usage** | Operational metadata around the lookup endpoint, such as request accounting against the service's daily usage limits. | `/api/usage` |
+| **Api** |  | `/api/{ip}` |
+| **Usage** |  | `/api/usage` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -109,15 +101,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from ipintelligence_sdk import IpIntelligenceSDK
 
-client = IpIntelligenceSDK({})
+client = IpIntelligenceSDK({
+    "apikey": os.environ.get("IP-INTELLIGENCE_APIKEY"),
+})
 
 
 # Load a specific api
-api, err = client.Api(None).load(
-    {"id": "example_id"}, None
-)
+api, err = client.Api().load({"id": "example_id"})
+print(api)
 ```
 
 ### PHP
@@ -126,13 +120,14 @@ api, err = client.Api(None).load(
 <?php
 require_once 'ipintelligence_sdk.php';
 
-$client = new IpIntelligenceSDK([]);
+$client = new IpIntelligenceSDK([
+    "apikey" => getenv("IP-INTELLIGENCE_APIKEY"),
+]);
 
 
 // Load a specific api
-[$api, $err] = $client->Api(null)->load(
-    ["id" => "example_id"], null
-);
+[$api, $err] = $client->Api()->load(["id" => "example_id"]);
+print_r($api);
 ```
 
 ### Golang
@@ -140,8 +135,13 @@ $client = new IpIntelligenceSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/ip-intelligence-sdk/go"
 
-client := sdk.NewIpIntelligenceSDK(map[string]any{})
+client := sdk.NewIpIntelligenceSDK(map[string]any{
+    "apikey": os.Getenv("IP-INTELLIGENCE_APIKEY"),
+})
 
+// Load api data
+api, err := client.Api(nil).Load(map[string]any{}, nil)
+fmt.Println(api)
 ```
 
 ### Ruby
@@ -149,13 +149,14 @@ client := sdk.NewIpIntelligenceSDK(map[string]any{})
 ```ruby
 require_relative "IpIntelligence_sdk"
 
-client = IpIntelligenceSDK.new({})
+client = IpIntelligenceSDK.new({
+  "apikey" => ENV["IP-INTELLIGENCE_APIKEY"],
+})
 
 
 # Load a specific api
-api, err = client.Api(nil).load(
-  { "id" => "example_id" }, nil
-)
+api, err = client.Api().load({ "id" => "example_id" })
+puts api
 ```
 
 ### Lua
@@ -163,13 +164,14 @@ api, err = client.Api(nil).load(
 ```lua
 local sdk = require("ip-intelligence_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("IP-INTELLIGENCE_APIKEY"),
+})
 
 
 -- Load a specific api
-local api, err = client:Api(nil):load(
-  { id = "example_id" }, nil
-)
+local api, err = client:Api():load({ id = "example_id" })
+print(api)
 ```
 
 ## Unit testing in offline mode
@@ -188,25 +190,21 @@ const result = await client.Api().load({ id: 'test01' })
 ### Python
 
 ```python
-client = IpIntelligenceSDK.test(None, None)
-result, err = client.Api(None).load(
-    {"id": "test01"}, None
-)
+client = IpIntelligenceSDK.test()
+result, err = client.Api().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = IpIntelligenceSDK::test(null, null);
-[$result, $err] = $client->Api(null)->load(
-    ["id" => "test01"], null
-);
+$client = IpIntelligenceSDK::test();
+[$result, $err] = $client->Api()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Api(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -215,19 +213,15 @@ result, err := client.Api(nil).Load(
 ### Ruby
 
 ```ruby
-client = IpIntelligenceSDK.test(nil, nil)
-result, err = client.Api(nil).load(
-  { "id" => "test01" }, nil
-)
+client = IpIntelligenceSDK.test
+result, err = client.Api().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Api(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Api():load({ id = "test01" })
 ```
 
 ## How it works
@@ -331,11 +325,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the IP Intelligence API
-
-- Upstream: [https://addr.zone](https://addr.zone)
-- API docs: [https://addr.zone/docs](https://addr.zone/docs)
 
 ---
 

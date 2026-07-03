@@ -79,12 +79,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'IPINTELLIGENCE_TEST_API_ENTID': {},
     'IPINTELLIGENCE_TEST_LIVE': 'FALSE',
+    'IPINTELLIGENCE_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.IPINTELLIGENCE_TEST_LIVE
 
   if (live) {
     const client = new IpIntelligenceSDK({
+      apikey: env.IPINTELLIGENCE_APIKEY,
     })
 
     let idmap: any = env['IPINTELLIGENCE_TEST_API_ENTID']

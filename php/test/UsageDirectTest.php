@@ -67,12 +67,14 @@ function usage_direct_setup($mockres)
     $env = Runner::env_override([
         "IPINTELLIGENCE_TEST_USAGE_ENTID" => [],
         "IPINTELLIGENCE_TEST_LIVE" => "FALSE",
+        "IPINTELLIGENCE_APIKEY" => "NONE",
     ]);
 
     $live = $env["IPINTELLIGENCE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["IPINTELLIGENCE_APIKEY"],
         ];
         $client = new IpIntelligenceSDK($merged_opts);
         return [
