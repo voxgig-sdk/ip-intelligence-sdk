@@ -90,7 +90,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## ApiEntity
 
 ```php
-$api = $client->api();
+$api = $client->Api();
 ```
 
 ### Fields
@@ -114,7 +114,7 @@ $api = $client->api();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->api()->load(["id" => "api_id"]);
+$result = $client->Api()->load(["id" => "api_id"]);
 ```
 
 ### Common Methods
@@ -150,7 +150,7 @@ Return the entity name.
 ## UsageEntity
 
 ```php
-$usage = $client->usage();
+$usage = $client->Usage();
 ```
 
 ### Fields
@@ -171,7 +171,7 @@ $usage = $client->usage();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->usage()->load(["id" => "usage_id"]);
+$result = $client->Usage()->load(["id" => "usage_id"]);
 ```
 
 ### Common Methods

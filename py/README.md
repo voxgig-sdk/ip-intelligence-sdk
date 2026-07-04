@@ -36,10 +36,12 @@ client = IpIntelligenceSDK({
 
 ### 3. Load an api
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.api.load({"id": "example_id"})
-    print(result)
+    api = client.Api().load({"id": "example_id"})
+    print(api)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -87,8 +89,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = IpIntelligenceSDK.test()
 
-result = client.api.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+api = client.Api().load({"id": "test01"})
+# api contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -166,8 +169,8 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `Api` | `(data) -> ApiEntity` | Create a Api entity instance. |
-| `Usage` | `(data) -> UsageEntity` | Create a Usage entity instance. |
+| `Api` | `(data) -> ApiEntity` | Create an Api entity instance. |
+| `Usage` | `(data) -> UsageEntity` | Create an Usage entity instance. |
 
 ### Entity interface
 
@@ -247,7 +250,7 @@ API path: `/api/usage`
 
 ### Api
 
-Create an instance: `const api = client.api`
+Create an instance: `api = client.Api()`
 
 #### Operations
 
@@ -271,14 +274,14 @@ Create an instance: `const api = client.api`
 
 #### Example: Load
 
-```ts
-const api = await client.api.load({ id: 'api_id' })
+```python
+api = client.Api().load({"id": "api_id"})
 ```
 
 
 ### Usage
 
-Create an instance: `const usage = client.usage`
+Create an instance: `usage = client.Usage()`
 
 #### Operations
 
@@ -299,8 +302,8 @@ Create an instance: `const usage = client.usage`
 
 #### Example: Load
 
-```ts
-const usage = await client.usage.load({ id: 'usage_id' })
+```python
+usage = client.Usage().load({"id": "usage_id"})
 ```
 
 
@@ -374,7 +377,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-api = client.api
+api = client.Api()
 api.load({"id": "example_id"})
 
 # api.data_get() now returns the loaded api data

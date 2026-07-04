@@ -220,41 +220,21 @@ class IpIntelligenceSDK:
         }
 
 
-    @property
-    def api(self):
-        """Idiomatic facade: client.api.list() / client.api.load({"id": ...})."""
-        from entity.api_entity import ApiEntity
-        cached = getattr(self, "_api", None)
-        if cached is None:
-            cached = ApiEntity(self, None)
-            self._api = cached
-        return cached
-
-    def Api(self, data=None):
-        # Deprecated: use client.api instead.
+    def Api(self, data=None) -> "ApiEntity":
+        """Entity factory: client.Api().list({}) / client.Api().load({"id": ...})."""
         from entity.api_entity import ApiEntity
         return ApiEntity(self, data)
 
 
-    @property
-    def usage(self):
-        """Idiomatic facade: client.usage.list() / client.usage.load({"id": ...})."""
-        from entity.usage_entity import UsageEntity
-        cached = getattr(self, "_usage", None)
-        if cached is None:
-            cached = UsageEntity(self, None)
-            self._usage = cached
-        return cached
-
-    def Usage(self, data=None):
-        # Deprecated: use client.usage instead.
+    def Usage(self, data=None) -> "UsageEntity":
+        """Entity factory: client.Usage().list({}) / client.Usage().load({"id": ...})."""
         from entity.usage_entity import UsageEntity
         return UsageEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "IpIntelligenceSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class IpIntelligenceSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.api_entity import ApiEntity
+    from entity.usage_entity import UsageEntity

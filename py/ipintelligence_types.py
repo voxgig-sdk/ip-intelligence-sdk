@@ -4,32 +4,37 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Api:
+class ApiRequired(TypedDict):
     asn_handle: str
     asn_id: int
     country_code: str
     country_name: str
     ip: str
     trust_score: int
-    malicious: Optional[dict] = None
-    metadata: Optional[dict] = None
 
 
-@dataclass
-class ApiLoadMatch:
+class Api(ApiRequired, total=False):
+    malicious: dict
+    metadata: dict
+
+
+class ApiLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class Usage:
+class Usage(TypedDict):
     account_level: str
     current_usage: int
     monthly_limit: int
@@ -38,12 +43,10 @@ class Usage:
     usage_percentage: float
 
 
-@dataclass
-class UsageLoadMatch:
-    account_level: Optional[str] = None
-    current_usage: Optional[int] = None
-    monthly_limit: Optional[int] = None
-    next_reset: Optional[str] = None
-    remaining_request: Optional[int] = None
-    usage_percentage: Optional[float] = None
-
+class UsageLoadMatch(TypedDict, total=False):
+    account_level: str
+    current_usage: int
+    monthly_limit: int
+    next_reset: str
+    remaining_request: int
+    usage_percentage: float

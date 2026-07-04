@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:api():list() / client:api():load({ id = ... })
-function IpIntelligenceSDK:api(data)
+-- Idiomatic facade: client:Api():list() / client:Api():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function IpIntelligenceSDK:Api(data)
   local EntityMod = require("entity.api_entity")
   if data == nil then
     if self._api == nil then
@@ -256,15 +257,10 @@ function IpIntelligenceSDK:api(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:api() instead.
-function IpIntelligenceSDK:Api(data)
-  local EntityMod = require("entity.api_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:usage():list() / client:usage():load({ id = ... })
-function IpIntelligenceSDK:usage(data)
+-- Idiomatic facade: client:Usage():list() / client:Usage():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function IpIntelligenceSDK:Usage(data)
   local EntityMod = require("entity.usage_entity")
   if data == nil then
     if self._usage == nil then
@@ -272,12 +268,6 @@ function IpIntelligenceSDK:usage(data)
     end
     return self._usage
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:usage() instead.
-function IpIntelligenceSDK:Usage(data)
-  local EntityMod = require("entity.usage_entity")
   return EntityMod.new(self, data)
 end
 

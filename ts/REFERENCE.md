@@ -122,7 +122,7 @@ Alias for `IpIntelligenceSDK.test()`.
 ## ApiEntity
 
 ```ts
-const api = client.api
+const api = client.Api()
 ```
 
 ### Fields
@@ -146,7 +146,7 @@ const api = client.api
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.api.load({ id: 'api_id' })
+const result = await client.Api().load({ id: 'api_id' })
 ```
 
 ### Common Methods
@@ -180,7 +180,7 @@ Return a copy of the entity options.
 ## UsageEntity
 
 ```ts
-const usage = client.usage
+const usage = client.Usage()
 ```
 
 ### Fields
@@ -201,7 +201,7 @@ const usage = client.usage
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.usage.load({ id: 'usage_id' })
+const result = await client.Usage().load({ id: 'usage_id' })
 ```
 
 ### Common Methods

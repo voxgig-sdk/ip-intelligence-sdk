@@ -205,28 +205,14 @@ class IpIntelligenceSDK {
 
 
 
-  _api?: ApiEntity
-
-  // Idiomatic facade: `client.api.list()` / `client.api.load({ id })`.
-  get api(): ApiEntity {
-    return (this._api ??= new ApiEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.api` instead. */
+  // Entity access: `client.Api().list()` / `client.Api().load({ id })`.
   Api(data?: any) {
     const self = this
     return new ApiEntity(self,data)
   }
 
 
-  _usage?: UsageEntity
-
-  // Idiomatic facade: `client.usage.list()` / `client.usage.load({ id })`.
-  get usage(): UsageEntity {
-    return (this._usage ??= new UsageEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.usage` instead. */
+  // Entity access: `client.Usage().list()` / `client.Usage().load({ id })`.
   Usage(data?: any) {
     const self = this
     return new UsageEntity(self,data)

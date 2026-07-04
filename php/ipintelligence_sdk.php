@@ -233,10 +233,10 @@ class IpIntelligenceSDK
 
     private $_api = null;
 
-    // Idiomatic facade: $client->api()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Api() (PHP method
-    // names are case-insensitive).
-    public function api($data = null)
+    // Canonical facade: $client->Api()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->api()
+    // resolves here too.
+    public function Api($data = null)
     {
         require_once __DIR__ . '/entity/api_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class IpIntelligenceSDK
 
     private $_usage = null;
 
-    // Idiomatic facade: $client->usage()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Usage() (PHP method
-    // names are case-insensitive).
-    public function usage($data = null)
+    // Canonical facade: $client->Usage()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->usage()
+    // resolves here too.
+    public function Usage($data = null)
     {
         require_once __DIR__ . '/entity/usage_entity.php';
         if ($data === null) {
