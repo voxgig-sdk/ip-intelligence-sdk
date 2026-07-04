@@ -116,6 +116,7 @@ class IpIntelligenceConfig
                         'orig' => 'ip',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                     'query' => [

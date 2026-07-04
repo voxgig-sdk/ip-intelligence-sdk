@@ -111,6 +111,7 @@ def make_config():
                       "orig": "ip",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                   "query": [

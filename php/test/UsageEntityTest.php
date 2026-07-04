@@ -49,8 +49,7 @@ class UsageEntityTest extends TestCase
         // LOAD
         $usage_ref01_ent = $client->Usage(null);
         $usage_ref01_match_dt0 = [];
-        [$usage_ref01_data_dt0_loaded, $err] = $usage_ref01_ent->load($usage_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $usage_ref01_data_dt0_loaded = $usage_ref01_ent->load($usage_ref01_match_dt0, null);
         $this->assertNotNull($usage_ref01_data_dt0_loaded);
 
     }

@@ -88,7 +88,7 @@ same parameters as `direct()`.
 ## ApiEntity
 
 ```lua
-local api = client:Api(nil)
+local api = client:api(nil)
 ```
 
 ### Fields
@@ -112,7 +112,7 @@ local api = client:Api(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Api():load({ id = "api_id" })
+local result, err = client:api():load({ id = "api_id" })
 ```
 
 ### Common Methods
@@ -148,7 +148,7 @@ Return the entity name.
 ## UsageEntity
 
 ```lua
-local usage = client:Usage(nil)
+local usage = client:usage(nil)
 ```
 
 ### Fields
@@ -169,7 +169,7 @@ local usage = client:Usage(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Usage():load({ id = "usage_id" })
+local result, err = client:usage():load({ id = "usage_id" })
 ```
 
 ### Common Methods

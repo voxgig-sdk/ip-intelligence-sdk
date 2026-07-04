@@ -144,16 +144,23 @@ class IpIntelligenceSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class IpIntelligenceSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,20 +212,42 @@ class IpIntelligenceSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def api(self):
+        """Idiomatic facade: client.api.list() / client.api.load({"id": ...})."""
+        from entity.api_entity import ApiEntity
+        cached = getattr(self, "_api", None)
+        if cached is None:
+            cached = ApiEntity(self, None)
+            self._api = cached
+        return cached
 
     def Api(self, data=None):
+        # Deprecated: use client.api instead.
         from entity.api_entity import ApiEntity
         return ApiEntity(self, data)
 
 
+    @property
+    def usage(self):
+        """Idiomatic facade: client.usage.list() / client.usage.load({"id": ...})."""
+        from entity.usage_entity import UsageEntity
+        cached = getattr(self, "_usage", None)
+        if cached is None:
+            cached = UsageEntity(self, None)
+            self._usage = cached
+        return cached
+
     def Usage(self, data=None):
+        # Deprecated: use client.usage instead.
         from entity.usage_entity import UsageEntity
         return UsageEntity(self, data)
 

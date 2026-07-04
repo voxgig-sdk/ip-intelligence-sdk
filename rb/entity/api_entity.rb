@@ -45,6 +45,7 @@ class ApiEntity
     end
   end
 
+  # @return [Api, Hash] the current Api data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class ApiEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Api fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Api.
+  #
+  # @param reqmatch [ApiLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Api, Hash] the loaded Api; raises IpIntelligenceError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

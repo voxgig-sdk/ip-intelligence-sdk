@@ -245,11 +245,17 @@ func (sdk *IpIntelligenceSDK) Direct(fetchargs map[string]any) (map[string]any, 
 }
 
 
+// Api returns a Api entity bound to this client.
+// Idiomatic usage: client.Api(nil).List(nil, nil) or
+// client.Api(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *IpIntelligenceSDK) Api(data map[string]any) IpIntelligenceEntity {
 	return NewApiEntityFunc(sdk, data)
 }
 
 
+// Usage returns a Usage entity bound to this client.
+// Idiomatic usage: client.Usage(nil).List(nil, nil) or
+// client.Usage(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *IpIntelligenceSDK) Usage(data map[string]any) IpIntelligenceEntity {
 	return NewUsageEntityFunc(sdk, data)
 }

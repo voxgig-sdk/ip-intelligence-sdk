@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch ApiLoadMatch
+---@param ctrl? table
+---@return Api
+---@return string? err
 function ApiEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

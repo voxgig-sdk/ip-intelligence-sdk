@@ -3,6 +3,8 @@
 import { ApiEntity } from './entity/ApiEntity'
 import { UsageEntity } from './entity/UsageEntity'
 
+export type * from './IpIntelligenceTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -203,12 +205,28 @@ class IpIntelligenceSDK {
 
 
 
+  _api?: ApiEntity
+
+  // Idiomatic facade: `client.api.list()` / `client.api.load({ id })`.
+  get api(): ApiEntity {
+    return (this._api ??= new ApiEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.api` instead. */
   Api(data?: any) {
     const self = this
     return new ApiEntity(self,data)
   }
 
 
+  _usage?: UsageEntity
+
+  // Idiomatic facade: `client.usage.list()` / `client.usage.load({ id })`.
+  get usage(): UsageEntity {
+    return (this._usage ??= new UsageEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.usage` instead. */
   Usage(data?: any) {
     const self = this
     return new UsageEntity(self,data)

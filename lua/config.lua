@@ -110,6 +110,7 @@ local function make_config()
                       ["orig"] = "ip",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {

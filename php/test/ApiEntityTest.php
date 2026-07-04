@@ -49,8 +49,7 @@ class ApiEntityTest extends TestCase
         // LOAD
         $api_ref01_ent = $client->Api(null);
         $api_ref01_match_dt0 = [];
-        [$api_ref01_data_dt0_loaded, $err] = $api_ref01_ent->load($api_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $api_ref01_data_dt0_loaded = $api_ref01_ent->load($api_ref01_match_dt0, null);
         $this->assertNotNull($api_ref01_data_dt0_loaded);
 
     }

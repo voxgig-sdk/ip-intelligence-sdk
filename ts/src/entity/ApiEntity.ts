@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Api,
+  ApiLoadMatch,
+} from '../IpIntelligenceTypes'
 
 // TODO: needs Entity superclass
-class ApiEntity extends IpIntelligenceEntityBase {
+class ApiEntity extends IpIntelligenceEntityBase<Api> {
 
   constructor(client: IpIntelligenceSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class ApiEntity extends IpIntelligenceEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: ApiLoadMatch, ctrl?: Control): Promise<Api> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class ApiEntity extends IpIntelligenceEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Api> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

@@ -9,9 +9,12 @@ The TypeScript SDK for the IpIntelligence API — a type-safe, entity-oriented c
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/ip-intelligence
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/ip-intelligence-sdk/releases](https://github.com/voxgig-sdk/ip-intelligence-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,17 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { IpIntelligenceSDK } from 'ip-intelligence'
+import { IpIntelligenceSDK } from '@voxgig-sdk/ip-intelligence'
 
 const client = new IpIntelligenceSDK({
-  apikey: process.env.IP-INTELLIGENCE_APIKEY,
+  apikey: process.env.IP_INTELLIGENCE_APIKEY,
 })
 ```
 
-### 3. Load a api
+### 3. Load an api
 
 ```ts
-const result = await client.Api().load({ id: 'example_id' })
+const result = await client.api.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = IpIntelligenceSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.api.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -96,7 +99,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.api
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -133,8 +136,8 @@ const client = new IpIntelligenceSDK({
 Create a `.env.local` file at the project root:
 
 ```
-IP-INTELLIGENCE_TEST_LIVE=TRUE
-IP-INTELLIGENCE_APIKEY=<your-key>
+IP_INTELLIGENCE_TEST_LIVE=TRUE
+IP_INTELLIGENCE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -290,7 +293,7 @@ API path: `/api/usage`
 
 ### Api
 
-Create an instance: `const api = client.Api()`
+Create an instance: `const api = client.api`
 
 #### Operations
 
@@ -315,13 +318,13 @@ Create an instance: `const api = client.Api()`
 #### Example: Load
 
 ```ts
-const api = await client.Api().load({ id: 'api_id' })
+const api = await client.api.load({ id: 'api_id' })
 ```
 
 
 ### Usage
 
-Create an instance: `const usage = client.Usage()`
+Create an instance: `const usage = client.usage`
 
 #### Operations
 
@@ -343,7 +346,7 @@ Create an instance: `const usage = client.Usage()`
 #### Example: Load
 
 ```ts
-const usage = await client.Usage().load({ id: 'usage_id' })
+const usage = await client.usage.load({ id: 'usage_id' })
 ```
 
 
@@ -404,7 +407,7 @@ ip-intelligence/
 Import the SDK from the package root:
 
 ```ts
-import { IpIntelligenceSDK } from 'ip-intelligence'
+import { IpIntelligenceSDK } from '@voxgig-sdk/ip-intelligence'
 ```
 
 ### Entity state
@@ -414,11 +417,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const api = client.api
+await api.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// api.data() now returns the loaded api data
+// api.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -42,8 +42,7 @@ class ApiEntityTest < Minitest::Test
     # LOAD
     api_ref01_ent = client.Api(nil)
     api_ref01_match_dt0 = {}
-    api_ref01_data_dt0_loaded, err = api_ref01_ent.load(api_ref01_match_dt0, nil)
-    assert_nil err
+    api_ref01_data_dt0_loaded = api_ref01_ent.load(api_ref01_match_dt0, nil)
     assert !api_ref01_data_dt0_loaded.nil?
 
   end

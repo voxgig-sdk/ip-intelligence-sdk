@@ -42,8 +42,7 @@ class UsageEntityTest < Minitest::Test
     # LOAD
     usage_ref01_ent = client.Usage(nil)
     usage_ref01_match_dt0 = {}
-    usage_ref01_data_dt0_loaded, err = usage_ref01_ent.load(usage_ref01_match_dt0, nil)
-    assert_nil err
+    usage_ref01_data_dt0_loaded = usage_ref01_ent.load(usage_ref01_match_dt0, nil)
     assert !usage_ref01_data_dt0_loaded.nil?
 
   end

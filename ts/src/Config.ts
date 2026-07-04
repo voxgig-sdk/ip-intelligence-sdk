@@ -142,7 +142,8 @@ class Config {
                     "name": "id",
                     "orig": "ip",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ],
                 "query": [
