@@ -8,7 +8,7 @@ Complete API reference for the IpIntelligence PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/ip-intelligence_sdk.php';
+require_once __DIR__ . '/ipintelligence_sdk.php';
 
 $client = new IpIntelligenceSDK($options);
 ```
@@ -50,11 +50,11 @@ Create a new `ApiEntity` instance. Pass `null` for no initial data.
 
 Create a new `UsageEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): IpIntelligenceUtility`
 
 Return a copy of the SDK utility object.
 
@@ -97,15 +97,15 @@ $api = $client->Api();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asn_handle` | ``$STRING`` | Yes |  |
-| `asn_id` | ``$INTEGER`` | Yes |  |
-| `country_code` | ``$STRING`` | Yes |  |
-| `country_name` | ``$STRING`` | Yes |  |
-| `ip` | ``$STRING`` | Yes |  |
-| `is` | ``$ARRAY`` | Yes |  |
-| `malicious` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `trust_score` | ``$INTEGER`` | Yes |  |
+| `asn_handle` | `string` | Yes |  |
+| `asn_id` | `int` | Yes |  |
+| `country_code` | `string` | Yes |  |
+| `country_name` | `string` | Yes |  |
+| `ip` | `string` | Yes |  |
+| `is` | `array` | Yes |  |
+| `malicious` | `array` | No |  |
+| `metadata` | `array` | No |  |
+| `trust_score` | `int` | Yes |  |
 
 ### Operations
 
@@ -119,19 +119,19 @@ $result = $client->Api()->load(["id" => "api_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -140,7 +140,7 @@ Set the entity match criteria.
 Create a new `ApiEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -157,12 +157,12 @@ $usage = $client->Usage();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `account_level` | ``$STRING`` | Yes |  |
-| `current_usage` | ``$INTEGER`` | Yes |  |
-| `monthly_limit` | ``$INTEGER`` | Yes |  |
-| `next_reset` | ``$STRING`` | Yes |  |
-| `remaining_request` | ``$INTEGER`` | Yes |  |
-| `usage_percentage` | ``$NUMBER`` | Yes |  |
+| `account_level` | `string` | Yes |  |
+| `current_usage` | `int` | Yes |  |
+| `monthly_limit` | `int` | Yes |  |
+| `next_reset` | `string` | Yes |  |
+| `remaining_request` | `int` | Yes |  |
+| `usage_percentage` | `float` | Yes |  |
 
 ### Operations
 
@@ -171,24 +171,24 @@ $usage = $client->Usage();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Usage()->load(["id" => "usage_id"]);
+$result = $client->Usage()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -197,7 +197,7 @@ Set the entity match criteria.
 Create a new `UsageEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

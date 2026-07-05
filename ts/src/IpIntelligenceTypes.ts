@@ -30,5 +30,12 @@ export interface Usage {
   usage_percentage: number
 }
 
-export type UsageLoadMatch = Partial<Usage>
+export interface UsageLoadMatch {
+  account_level?: string
+  current_usage?: number
+  monthly_limit?: number
+  next_reset?: string
+  remaining_request?: number
+  usage_percentage?: number
+}
 

@@ -95,15 +95,15 @@ local api = client:Api(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asn_handle` | ``$STRING`` | Yes |  |
-| `asn_id` | ``$INTEGER`` | Yes |  |
-| `country_code` | ``$STRING`` | Yes |  |
-| `country_name` | ``$STRING`` | Yes |  |
-| `ip` | ``$STRING`` | Yes |  |
-| `is` | ``$ARRAY`` | Yes |  |
-| `malicious` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `trust_score` | ``$INTEGER`` | Yes |  |
+| `asn_handle` | `string` | Yes |  |
+| `asn_id` | `number` | Yes |  |
+| `country_code` | `string` | Yes |  |
+| `country_name` | `string` | Yes |  |
+| `ip` | `string` | Yes |  |
+| `is` | `table` | Yes |  |
+| `malicious` | `table` | No |  |
+| `metadata` | `table` | No |  |
+| `trust_score` | `number` | Yes |  |
 
 ### Operations
 
@@ -155,12 +155,12 @@ local usage = client:Usage(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `account_level` | ``$STRING`` | Yes |  |
-| `current_usage` | ``$INTEGER`` | Yes |  |
-| `monthly_limit` | ``$INTEGER`` | Yes |  |
-| `next_reset` | ``$STRING`` | Yes |  |
-| `remaining_request` | ``$INTEGER`` | Yes |  |
-| `usage_percentage` | ``$NUMBER`` | Yes |  |
+| `account_level` | `string` | Yes |  |
+| `current_usage` | `number` | Yes |  |
+| `monthly_limit` | `number` | Yes |  |
+| `next_reset` | `string` | Yes |  |
+| `remaining_request` | `number` | Yes |  |
+| `usage_percentage` | `number` | Yes |  |
 
 ### Operations
 
@@ -169,7 +169,7 @@ local usage = client:Usage(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Usage():load({ id = "usage_id" })
+local result, err = client:Usage():load()
 ```
 
 ### Common Methods

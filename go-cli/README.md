@@ -16,7 +16,6 @@ go build -o ip-intelligence-cli ./...
 
 ```sh
 # One-shot: arguments form a single AQL expression
-./ip-intelligence-cli list api
 ./ip-intelligence-cli load 1 api
 ./ip-intelligence-cli load '{id:1}' api
 
@@ -28,9 +27,7 @@ go build -o ip-intelligence-cli ./...
 
 | Word     | Signatures                                   | Description                |
 |----------|----------------------------------------------|----------------------------|
-| `list`   | `[entity]` · `[query entity]`                | List records               |
 | `load`   | `[entity]` · `[query entity]`                | Load a single record       |
-| `update` | `[entity]` · `[query entity]`                | Update a record            |
 
 `query` is either a Map (`{id:1}`) or a Scalar (`1`, treated as `{id:1}`).
 `entity` is one of the SDK's entity names (auto-quoted as an atom).

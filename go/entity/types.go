@@ -36,8 +36,7 @@ type Usage struct {
 	UsagePercentage float64 `json:"usage_percentage"`
 }
 
-// UsageLoadMatch mirrors the usage fields as an all-optional match
-// filter (Go analog of Partial<Usage>).
+// UsageLoadMatch is the typed request payload for Usage.LoadTyped.
 type UsageLoadMatch struct {
 	AccountLevel *string `json:"account_level,omitempty"`
 	CurrentUsage *int `json:"current_usage,omitempty"`

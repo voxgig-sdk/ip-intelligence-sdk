@@ -8,7 +8,7 @@ Complete API reference for the IpIntelligence Python SDK.
 ### Constructor
 
 ```python
-from ip-intelligence_sdk import IpIntelligenceSDK
+from ipintelligence_sdk import IpIntelligenceSDK
 
 client = IpIntelligenceSDK(options)
 ```
@@ -92,15 +92,15 @@ api = client.Api()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asn_handle` | ``$STRING`` | Yes |  |
-| `asn_id` | ``$INTEGER`` | Yes |  |
-| `country_code` | ``$STRING`` | Yes |  |
-| `country_name` | ``$STRING`` | Yes |  |
-| `ip` | ``$STRING`` | Yes |  |
-| `is` | ``$ARRAY`` | Yes |  |
-| `malicious` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `trust_score` | ``$INTEGER`` | Yes |  |
+| `asn_handle` | `str` | Yes |  |
+| `asn_id` | `int` | Yes |  |
+| `country_code` | `str` | Yes |  |
+| `country_name` | `str` | Yes |  |
+| `ip` | `str` | Yes |  |
+| `is` | `list` | Yes |  |
+| `malicious` | `dict` | No |  |
+| `metadata` | `dict` | No |  |
+| `trust_score` | `int` | Yes |  |
 
 ### Operations
 
@@ -151,12 +151,12 @@ usage = client.Usage()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `account_level` | ``$STRING`` | Yes |  |
-| `current_usage` | ``$INTEGER`` | Yes |  |
-| `monthly_limit` | ``$INTEGER`` | Yes |  |
-| `next_reset` | ``$STRING`` | Yes |  |
-| `remaining_request` | ``$INTEGER`` | Yes |  |
-| `usage_percentage` | ``$NUMBER`` | Yes |  |
+| `account_level` | `str` | Yes |  |
+| `current_usage` | `int` | Yes |  |
+| `monthly_limit` | `int` | Yes |  |
+| `next_reset` | `str` | Yes |  |
+| `remaining_request` | `int` | Yes |  |
+| `usage_percentage` | `float` | Yes |  |
 
 ### Operations
 
@@ -165,7 +165,7 @@ usage = client.Usage()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Usage().load({"id": "usage_id"})
+result = client.Usage().load()
 ```
 
 ### Common Methods

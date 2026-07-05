@@ -67,10 +67,12 @@ class ApiEntity
   
   # Load a single Api.
   #
-  # @param reqmatch [ApiLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param reqmatch [ApiLoadMatch, Hash, nil] match criteria (id/query fields);
+  #   optional — an entity with no id-like key loads with no match (nil is treated
+  #   as an empty match, so client.Api.load works with no args).
   # @param ctrl [Object, nil] optional per-call control
   # @return [Api, Hash] the loaded Api; raises IpIntelligenceError on failure
-  def load(reqmatch, ctrl = nil)
+  def load(reqmatch = nil, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
       "opname" => "load",

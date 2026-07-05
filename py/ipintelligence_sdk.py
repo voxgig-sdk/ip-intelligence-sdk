@@ -221,13 +221,13 @@ class IpIntelligenceSDK:
 
 
     def Api(self, data=None) -> "ApiEntity":
-        """Entity factory: client.Api().list({}) / client.Api().load({"id": ...})."""
+        """Entity factory: client.Api().list() / client.Api().load({"id": ...})."""
         from entity.api_entity import ApiEntity
         return ApiEntity(self, data)
 
 
     def Usage(self, data=None) -> "UsageEntity":
-        """Entity factory: client.Usage().list({}) / client.Usage().load({"id": ...})."""
+        """Entity factory: client.Usage().list() / client.Usage().load({"id": ...})."""
         from entity.usage_entity import UsageEntity
         return UsageEntity(self, data)
 

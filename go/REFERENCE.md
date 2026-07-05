@@ -102,15 +102,15 @@ api := client.Api(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asn_handle` | ``$STRING`` | Yes |  |
-| `asn_id` | ``$INTEGER`` | Yes |  |
-| `country_code` | ``$STRING`` | Yes |  |
-| `country_name` | ``$STRING`` | Yes |  |
-| `ip` | ``$STRING`` | Yes |  |
-| `is` | ``$ARRAY`` | Yes |  |
-| `malicious` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `trust_score` | ``$INTEGER`` | Yes |  |
+| `asn_handle` | `string` | Yes |  |
+| `asn_id` | `int` | Yes |  |
+| `country_code` | `string` | Yes |  |
+| `country_name` | `string` | Yes |  |
+| `ip` | `string` | Yes |  |
+| `is` | `[]any` | Yes |  |
+| `malicious` | `map[string]any` | No |  |
+| `metadata` | `map[string]any` | No |  |
+| `trust_score` | `int` | Yes |  |
 
 ### Operations
 
@@ -156,12 +156,12 @@ usage := client.Usage(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `account_level` | ``$STRING`` | Yes |  |
-| `current_usage` | ``$INTEGER`` | Yes |  |
-| `monthly_limit` | ``$INTEGER`` | Yes |  |
-| `next_reset` | ``$STRING`` | Yes |  |
-| `remaining_request` | ``$INTEGER`` | Yes |  |
-| `usage_percentage` | ``$NUMBER`` | Yes |  |
+| `account_level` | `string` | Yes |  |
+| `current_usage` | `int` | Yes |  |
+| `monthly_limit` | `int` | Yes |  |
+| `next_reset` | `string` | Yes |  |
+| `remaining_request` | `int` | Yes |  |
+| `usage_percentage` | `float64` | Yes |  |
 
 ### Operations
 
@@ -170,7 +170,7 @@ usage := client.Usage(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Usage(nil).Load(map[string]any{"id": "usage_id"}, nil)
+result, err := client.Usage(nil).Load(nil, nil)
 ```
 
 ### Common Methods

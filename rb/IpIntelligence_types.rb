@@ -87,7 +87,7 @@ Usage = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Usage#load (any subset of Usage fields).
+# Request payload for Usage#load.
 #
 # @!attribute [rw] account_level
 #   @return [String, nil]

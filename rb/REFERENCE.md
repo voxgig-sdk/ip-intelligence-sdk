@@ -8,7 +8,7 @@ Complete API reference for the IpIntelligence Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'ip-intelligence_sdk'
+require_relative 'IpIntelligence_sdk'
 
 client = IpIntelligenceSDK.new(options)
 ```
@@ -98,15 +98,15 @@ api = client.Api
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asn_handle` | ``$STRING`` | Yes |  |
-| `asn_id` | ``$INTEGER`` | Yes |  |
-| `country_code` | ``$STRING`` | Yes |  |
-| `country_name` | ``$STRING`` | Yes |  |
-| `ip` | ``$STRING`` | Yes |  |
-| `is` | ``$ARRAY`` | Yes |  |
-| `malicious` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `trust_score` | ``$INTEGER`` | Yes |  |
+| `asn_handle` | `String` | Yes |  |
+| `asn_id` | `Integer` | Yes |  |
+| `country_code` | `String` | Yes |  |
+| `country_name` | `String` | Yes |  |
+| `ip` | `String` | Yes |  |
+| `is` | `Array` | Yes |  |
+| `malicious` | `Hash` | No |  |
+| `metadata` | `Hash` | No |  |
+| `trust_score` | `Integer` | Yes |  |
 
 ### Operations
 
@@ -158,12 +158,12 @@ usage = client.Usage
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `account_level` | ``$STRING`` | Yes |  |
-| `current_usage` | ``$INTEGER`` | Yes |  |
-| `monthly_limit` | ``$INTEGER`` | Yes |  |
-| `next_reset` | ``$STRING`` | Yes |  |
-| `remaining_request` | ``$INTEGER`` | Yes |  |
-| `usage_percentage` | ``$NUMBER`` | Yes |  |
+| `account_level` | `String` | Yes |  |
+| `current_usage` | `Integer` | Yes |  |
+| `monthly_limit` | `Integer` | Yes |  |
+| `next_reset` | `String` | Yes |  |
+| `remaining_request` | `Integer` | Yes |  |
+| `usage_percentage` | `Float` | Yes |  |
 
 ### Operations
 
@@ -172,7 +172,7 @@ usage = client.Usage
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Usage.load({ "id" => "usage_id" })
+result = client.Usage.load()
 ```
 
 ### Common Methods

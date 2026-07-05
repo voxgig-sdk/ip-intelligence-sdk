@@ -43,7 +43,7 @@ class Usage
     public float $usage_percentage;
 }
 
-/** Match filter for Usage#load (any subset of Usage fields). */
+/** Request payload for Usage#load. */
 class UsageLoadMatch
 {
     public ?string $account_level = null;

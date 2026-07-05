@@ -129,15 +129,15 @@ const api = client.Api()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asn_handle` | ``$STRING`` | Yes |  |
-| `asn_id` | ``$INTEGER`` | Yes |  |
-| `country_code` | ``$STRING`` | Yes |  |
-| `country_name` | ``$STRING`` | Yes |  |
-| `ip` | ``$STRING`` | Yes |  |
-| `is` | ``$ARRAY`` | Yes |  |
-| `malicious` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `trust_score` | ``$INTEGER`` | Yes |  |
+| `asn_handle` | `string` | Yes |  |
+| `asn_id` | `number` | Yes |  |
+| `country_code` | `string` | Yes |  |
+| `country_name` | `string` | Yes |  |
+| `ip` | `string` | Yes |  |
+| `is` | `any[]` | Yes |  |
+| `malicious` | `Record<string, any>` | No |  |
+| `metadata` | `Record<string, any>` | No |  |
+| `trust_score` | `number` | Yes |  |
 
 ### Operations
 
@@ -187,12 +187,12 @@ const usage = client.Usage()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `account_level` | ``$STRING`` | Yes |  |
-| `current_usage` | ``$INTEGER`` | Yes |  |
-| `monthly_limit` | ``$INTEGER`` | Yes |  |
-| `next_reset` | ``$STRING`` | Yes |  |
-| `remaining_request` | ``$INTEGER`` | Yes |  |
-| `usage_percentage` | ``$NUMBER`` | Yes |  |
+| `account_level` | `string` | Yes |  |
+| `current_usage` | `number` | Yes |  |
+| `monthly_limit` | `number` | Yes |  |
+| `next_reset` | `string` | Yes |  |
+| `remaining_request` | `number` | Yes |  |
+| `usage_percentage` | `number` | Yes |  |
 
 ### Operations
 
@@ -201,7 +201,7 @@ const usage = client.Usage()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Usage().load({ id: 'usage_id' })
+const result = await client.Usage().load()
 ```
 
 ### Common Methods
