@@ -8,15 +8,22 @@ main: {
         url: "https://addr.zone/docs"
       }
       description: "The addr.zone API provides fast and precise IP intelligence, allowing developers to analyze visitor origins and identify network types, such as mobile networks, datacenters, VPNs, and proxies. It offers simple JSON responses with high daily usage limits, making it ideal for integration into various applications."
+      security: {
+        in: "header"
+        name: "X-API-Key"
+        prefix: ""
+        scheme: "ApiKeyAuth"
+        type: "apiKey"
+      }
       servers: [
         {
           description: "Production server"
           url: "https://addr.zone"
         }
       ]
+      summary: "The addr.zone API provides fast and precise IP intelligence, allowing developers to analyze visitor origins and identify network types, such as mobile networks, datacenters, VPNs, and proxies."
       title: "IP Intelligence API"
       version: "1.1.0"
+      website: "https://addr.zone"
     }
   }
-}
-

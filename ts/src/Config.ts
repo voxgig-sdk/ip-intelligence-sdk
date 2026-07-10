@@ -39,7 +39,7 @@ class Config {
     base: 'https://addr.zone',
 
     auth: {
-      prefix: 'Bearer',
+      prefix: '',
     },
 
     headers: {
