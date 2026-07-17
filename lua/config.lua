@@ -1,4 +1,4 @@
--- ProjectName SDK configuration
+-- IpIntelligence SDK configuration
 
 local function make_config()
   return {

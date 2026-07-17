@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- IpIntelligence SDK exists test
 
 local sdk = require("ip-intelligence_sdk")
 
