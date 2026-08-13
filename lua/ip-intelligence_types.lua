@@ -25,7 +25,7 @@
 ---@field current_usage number
 ---@field monthly_limit number
 ---@field next_reset string
----@field remaining_request number
+---@field remaining_requests number
 ---@field usage_percentage number
 
 ---@class UsageLoadMatch
@@ -33,7 +33,7 @@
 ---@field current_usage? number
 ---@field monthly_limit? number
 ---@field next_reset? string
----@field remaining_request? number
+---@field remaining_requests? number
 ---@field usage_percentage? number
 
 local M = {}

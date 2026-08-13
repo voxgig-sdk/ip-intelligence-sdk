@@ -37,7 +37,7 @@ $client = new IpIntelligenceSDK([
 
 ```php
 try {
-    // load() returns the bare Api record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Api record (throws on error).
     $api = $client->Api()->load(["id" => "example_id"]);
     print_r($api);
 } catch (\Throwable $err) {
@@ -128,7 +128,8 @@ $client = IpIntelligenceSDK::test([
     "entity" => ["api" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $api = $client->Api()->load(["id" => "test01"]);
 print_r($api);
 ```
@@ -230,7 +231,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -274,7 +275,7 @@ API path: `/api/{ip}`
 | `current_usage` |  |
 | `monthly_limit` |  |
 | `next_reset` |  |
-| `remaining_request` |  |
+| `remaining_requests` |  |
 | `usage_percentage` |  |
 
 Operations: Load.
@@ -313,7 +314,7 @@ Create an instance: `$api = $client->Api();`
 #### Example: Load
 
 ```php
-// load() returns the bare Api record (throws on error).
+// load() returns the ENTITY — call data_get() for the Api record (throws on error).
 $api = $client->Api()->load(["id" => "api_id"]);
 ```
 
@@ -336,13 +337,13 @@ Create an instance: `$usage = $client->Usage();`
 | `current_usage` | `int` |  |
 | `monthly_limit` | `int` |  |
 | `next_reset` | `string` |  |
-| `remaining_request` | `int` |  |
+| `remaining_requests` | `int` |  |
 | `usage_percentage` | `float` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Usage record (throws on error).
+// load() returns the ENTITY — call data_get() for the Usage record (throws on error).
 $usage = $client->Usage()->load();
 ```
 

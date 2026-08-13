@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'IpIntelligence',
   }
 
 
@@ -158,6 +158,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/{ip}",
               "parts": [
@@ -221,7 +222,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "remaining_request",
+          "name": "remaining_requests",
           "req": true,
           "type": "`$INTEGER`",
           "index$": 4
@@ -243,6 +244,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/usage",
               "parts": [

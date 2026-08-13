@@ -26,8 +26,8 @@ import {
 describe('ApiEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when IPINTELLIGENCE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('IPINTELLIGENCE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when IP_INTELLIGENCE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('IP_INTELLIGENCE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = IpIntelligenceSDK.test()

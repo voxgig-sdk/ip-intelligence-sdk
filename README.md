@@ -23,7 +23,7 @@ support (`load`):
 
 ```ts
 const client = new IpIntelligenceSDK()
-const api = await client.Api().load()
+const api = await client.Api().load({ id: "example_id" })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = IpIntelligenceSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = IpIntelligenceSDK.test({
+  entity: {
+    api: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const api = await client.Api().load({ id: 'test01' })
-// api is a bare Api populated with mock data
+// api is the Api entity, populated with mock data
+// — call api.data() for the record itself
 console.log(api)
 ```
 
@@ -190,7 +199,7 @@ $client = new IpIntelligenceSDK([
 ]);
 
 
-// Load a specific api (returns the bare record; throws on error)
+// Load a specific api (returns the ENTITY; call data_get() for the record; throws on error)
 $api = $client->Api()->load(["id" => "example_id"]);
 print_r($api);
 ```
@@ -222,7 +231,7 @@ client = IpIntelligenceSDK.new({
 })
 
 
-# Load a specific api (returns the bare record; raises on error)
+# Load a specific api (returns the ENTITY; call data_get for the record)
 api = client.Api.load({ "id" => "example_id" })
 puts api
 ```
@@ -358,6 +367,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://addr.zone/docs](https://addr.zone/docs)
 

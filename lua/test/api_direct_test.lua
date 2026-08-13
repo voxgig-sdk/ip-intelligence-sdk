@@ -68,16 +68,16 @@ function api_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["IPINTELLIGENCE_TEST_API_ENTID"] = {},
-    ["IPINTELLIGENCE_TEST_LIVE"] = "FALSE",
-    ["IPINTELLIGENCE_APIKEY"] = "NONE",
+    ["IP_INTELLIGENCE_TEST_API_ENTID"] = {},
+    ["IP_INTELLIGENCE_TEST_LIVE"] = "FALSE",
+    ["IP_INTELLIGENCE_APIKEY"] = "NONE",
   })
 
-  local live = env["IPINTELLIGENCE_TEST_LIVE"] == "TRUE"
+  local live = env["IP_INTELLIGENCE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["IPINTELLIGENCE_APIKEY"],
+      apikey = env["IP_INTELLIGENCE_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

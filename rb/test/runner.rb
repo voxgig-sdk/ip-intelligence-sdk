@@ -23,8 +23,8 @@ module IpIntelligenceTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("IPINTELLIGENCE_TEST_LIVE")
-    override = getenv("IPINTELLIGENCE_TEST_OVERRIDE")
+    live = getenv("IP_INTELLIGENCE_TEST_LIVE")
+    override = getenv("IP_INTELLIGENCE_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module IpIntelligenceTestRunner
       end
     end
 
-    explain = getenv("IPINTELLIGENCE_TEST_EXPLAIN")
-    m["IPINTELLIGENCE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("IP_INTELLIGENCE_TEST_EXPLAIN")
+    m["IP_INTELLIGENCE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

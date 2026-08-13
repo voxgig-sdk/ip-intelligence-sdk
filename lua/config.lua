@@ -125,6 +125,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/{ip}",
                 ["parts"] = {
@@ -188,7 +189,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "remaining_request",
+            ["name"] = "remaining_requests",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
             ["index$"] = 4,
@@ -210,6 +211,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/usage",
                 ["parts"] = {

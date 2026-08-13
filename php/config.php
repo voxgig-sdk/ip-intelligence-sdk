@@ -131,6 +131,7 @@ class IpIntelligenceConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/{ip}',
                   'parts' => [
@@ -194,7 +195,7 @@ class IpIntelligenceConfig
             ],
             [
               'active' => true,
-              'name' => 'remaining_request',
+              'name' => 'remaining_requests',
               'req' => true,
               'type' => '`$INTEGER`',
               'index$' => 4,
@@ -216,6 +217,7 @@ class IpIntelligenceConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/usage',
                   'parts' => [

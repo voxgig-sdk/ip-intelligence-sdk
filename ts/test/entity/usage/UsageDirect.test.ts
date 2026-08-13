@@ -19,11 +19,15 @@ import {
 describe('UsageDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when IPINTELLIGENCE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('IPINTELLIGENCE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when IP_INTELLIGENCE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('IP_INTELLIGENCE_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new IpIntelligenceSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -72,19 +76,19 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'IPINTELLIGENCE_TEST_USAGE_ENTID': {},
-    'IPINTELLIGENCE_TEST_LIVE': 'FALSE',
-    'IPINTELLIGENCE_APIKEY': 'NONE',
+    'IP_INTELLIGENCE_TEST_USAGE_ENTID': {},
+    'IP_INTELLIGENCE_TEST_LIVE': 'FALSE',
+    'IP_INTELLIGENCE_APIKEY': 'NONE',
   })
 
-  const live = 'TRUE' === env.IPINTELLIGENCE_TEST_LIVE
+  const live = 'TRUE' === env.IP_INTELLIGENCE_TEST_LIVE
 
   if (live) {
     const client = new IpIntelligenceSDK({
-      apikey: env.IPINTELLIGENCE_APIKEY,
+      apikey: env.IP_INTELLIGENCE_APIKEY,
     })
 
-    let idmap: any = env['IPINTELLIGENCE_TEST_USAGE_ENTID']
+    let idmap: any = env['IP_INTELLIGENCE_TEST_USAGE_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

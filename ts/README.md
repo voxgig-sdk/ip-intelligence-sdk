@@ -123,7 +123,8 @@ Create a mock client for unit testing — no server required:
 const client = IpIntelligenceSDK.test()
 
 const api = await client.Api().load({ id: 'test01' })
-// api is a bare entity populated with mock response data
+// api is the entity, populated with mock response data
+// — call api.data() for the record itself
 console.log(api)
 ```
 
@@ -313,7 +314,7 @@ API path: `/api/{ip}`
 | `current_usage` |  |
 | `monthly_limit` |  |
 | `next_reset` |  |
-| `remaining_request` |  |
+| `remaining_requests` |  |
 | `usage_percentage` |  |
 
 Operations: load.
@@ -374,7 +375,7 @@ Create an instance: `const usage = client.Usage()`
 | `current_usage` | `number` |  |
 | `monthly_limit` | `number` |  |
 | `next_reset` | `string` |  |
-| `remaining_request` | `number` |  |
+| `remaining_requests` | `number` |  |
 | `usage_percentage` | `number` |  |
 
 #### Example: Load

@@ -159,7 +159,7 @@ local usage = client:Usage(nil)
 | `current_usage` | `number` | Yes |  |
 | `monthly_limit` | `number` | Yes |  |
 | `next_reset` | `string` | Yes |  |
-| `remaining_request` | `number` | Yes |  |
+| `remaining_requests` | `number` | Yes |  |
 | `usage_percentage` | `number` | Yes |  |
 
 ### Operations

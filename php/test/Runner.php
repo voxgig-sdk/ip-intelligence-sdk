@@ -43,8 +43,8 @@ class IpIntelligenceTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('IPINTELLIGENCE_TEST_LIVE');
-        $override = self::getenv('IPINTELLIGENCE_TEST_OVERRIDE');
+        $live = self::getenv('IP_INTELLIGENCE_TEST_LIVE');
+        $override = self::getenv('IP_INTELLIGENCE_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class IpIntelligenceTestRunner
             }
         }
 
-        $explain = self::getenv('IPINTELLIGENCE_TEST_EXPLAIN');
+        $explain = self::getenv('IP_INTELLIGENCE_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['IPINTELLIGENCE_TEST_EXPLAIN'] = $explain;
+            $m['IP_INTELLIGENCE_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

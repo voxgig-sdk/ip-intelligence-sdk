@@ -1,4 +1,4 @@
 module github.com/voxgig-sdk/ip-intelligence-sdk/go
 
-go 1.20
+go 1.21
 

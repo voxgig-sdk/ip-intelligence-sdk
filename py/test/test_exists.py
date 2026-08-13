@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# IpIntelligence SDK exists test
 
 import pytest
 from ipintelligence_sdk import IpIntelligenceSDK

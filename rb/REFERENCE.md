@@ -162,7 +162,7 @@ usage = client.Usage
 | `current_usage` | `Integer` | Yes |  |
 | `monthly_limit` | `Integer` | Yes |  |
 | `next_reset` | `String` | Yes |  |
-| `remaining_request` | `Integer` | Yes |  |
+| `remaining_requests` | `Integer` | Yes |  |
 | `usage_percentage` | `Float` | Yes |  |
 
 ### Operations

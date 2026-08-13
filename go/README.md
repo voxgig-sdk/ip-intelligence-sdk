@@ -286,7 +286,7 @@ API path: `/api/{ip}`
 | `"current_usage"` |  |
 | `"monthly_limit"` |  |
 | `"next_reset"` |  |
-| `"remaining_request"` |  |
+| `"remaining_requests"` |  |
 | `"usage_percentage"` |  |
 
 Operations: Load.
@@ -351,7 +351,7 @@ Create an instance: `usage := client.Usage(nil)`
 | `current_usage` | `int` |  |
 | `monthly_limit` | `int` |  |
 | `next_reset` | `string` |  |
-| `remaining_request` | `int` |  |
+| `remaining_requests` | `int` |  |
 | `usage_percentage` | `float64` |  |
 
 #### Example: Load

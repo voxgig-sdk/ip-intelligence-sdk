@@ -72,7 +72,7 @@ ApiLoadMatch = Struct.new(
 # @!attribute [rw] next_reset
 #   @return [String]
 #
-# @!attribute [rw] remaining_request
+# @!attribute [rw] remaining_requests
 #   @return [Integer]
 #
 # @!attribute [rw] usage_percentage
@@ -82,7 +82,7 @@ Usage = Struct.new(
   :current_usage,
   :monthly_limit,
   :next_reset,
-  :remaining_request,
+  :remaining_requests,
   :usage_percentage,
   keyword_init: true
 )
@@ -101,7 +101,7 @@ Usage = Struct.new(
 # @!attribute [rw] next_reset
 #   @return [String, nil]
 #
-# @!attribute [rw] remaining_request
+# @!attribute [rw] remaining_requests
 #   @return [Integer, nil]
 #
 # @!attribute [rw] usage_percentage
@@ -111,7 +111,7 @@ UsageLoadMatch = Struct.new(
   :current_usage,
   :monthly_limit,
   :next_reset,
-  :remaining_request,
+  :remaining_requests,
   :usage_percentage,
   keyword_init: true
 )

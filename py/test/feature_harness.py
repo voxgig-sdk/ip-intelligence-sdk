@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import IpIntelligenceControl
-from core.error import IpIntelligenceError
-from core.result import IpIntelligenceResult
-from core.spec import IpIntelligenceSpec
+from ipintelligence_sdk.config import make_config
+from ipintelligence_sdk.features import _make_feature
+from ipintelligence_sdk.core.control import IpIntelligenceControl
+from ipintelligence_sdk.core.error import IpIntelligenceError
+from ipintelligence_sdk.core.result import IpIntelligenceResult
+from ipintelligence_sdk.core.spec import IpIntelligenceSpec
 
 
 # True when this SDK was generated with the named feature.

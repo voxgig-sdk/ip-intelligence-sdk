@@ -126,6 +126,7 @@ module IpIntelligenceConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/{ip}",
                   "parts" => [
@@ -189,7 +190,7 @@ module IpIntelligenceConfig
             },
             {
               "active" => true,
-              "name" => "remaining_request",
+              "name" => "remaining_requests",
               "req" => true,
               "type" => "`$INTEGER`",
               "index$" => 4,
@@ -211,6 +212,7 @@ module IpIntelligenceConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/usage",
                   "parts" => [

@@ -252,7 +252,7 @@ API path: `/api/{ip}`
 | `current_usage` |  |
 | `monthly_limit` |  |
 | `next_reset` |  |
-| `remaining_request` |  |
+| `remaining_requests` |  |
 | `usage_percentage` |  |
 
 Operations: Load.
@@ -313,7 +313,7 @@ Create an instance: `local usage = client:Usage(nil)`
 | `current_usage` | `number` |  |
 | `monthly_limit` | `number` |  |
 | `next_reset` | `string` |  |
-| `remaining_request` | `number` |  |
+| `remaining_requests` | `number` |  |
 | `usage_percentage` | `number` |  |
 
 #### Example: Load

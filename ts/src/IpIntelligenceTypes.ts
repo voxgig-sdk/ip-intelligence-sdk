@@ -26,7 +26,7 @@ export interface Usage {
   current_usage: number
   monthly_limit: number
   next_reset: string
-  remaining_request: number
+  remaining_requests: number
   usage_percentage: number
 }
 
@@ -35,7 +35,7 @@ export interface UsageLoadMatch {
   current_usage?: number
   monthly_limit?: number
   next_reset?: string
-  remaining_request?: number
+  remaining_requests?: number
   usage_percentage?: number
 }
 

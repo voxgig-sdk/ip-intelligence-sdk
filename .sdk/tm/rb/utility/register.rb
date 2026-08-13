@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ IpIntelligenceUtility.registrar = ->(u) {
   u.prepare_params = IpIntelligenceUtilities::PrepareParams
   u.prepare_path = IpIntelligenceUtilities::PreparePath
   u.prepare_query = IpIntelligenceUtilities::PrepareQuery
+  u.graphql_body = IpIntelligenceUtilities::GraphqlBody
+  u.graphql_errors = IpIntelligenceUtilities::GraphqlErrors
   u.result_basic = IpIntelligenceUtilities::ResultBasic
   u.result_body = IpIntelligenceUtilities::ResultBody
   u.result_headers = IpIntelligenceUtilities::ResultHeaders

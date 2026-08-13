@@ -39,7 +39,7 @@ class Usage
     public int $current_usage;
     public int $monthly_limit;
     public string $next_reset;
-    public int $remaining_request;
+    public int $remaining_requests;
     public float $usage_percentage;
 }
 
@@ -50,7 +50,7 @@ class UsageLoadMatch
     public ?int $current_usage = null;
     public ?int $monthly_limit = null;
     public ?string $next_reset = null;
-    public ?int $remaining_request = null;
+    public ?int $remaining_requests = null;
     public ?float $usage_percentage = null;
 }
 

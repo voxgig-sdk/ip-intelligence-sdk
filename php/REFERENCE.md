@@ -161,7 +161,7 @@ $usage = $client->Usage();
 | `current_usage` | `int` | Yes |  |
 | `monthly_limit` | `int` | Yes |  |
 | `next_reset` | `string` | Yes |  |
-| `remaining_request` | `int` | Yes |  |
+| `remaining_requests` | `int` | Yes |  |
 | `usage_percentage` | `float` | Yes |  |
 
 ### Operations

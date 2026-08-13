@@ -59,16 +59,16 @@ def usage_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "IPINTELLIGENCE_TEST_USAGE_ENTID" => {},
-    "IPINTELLIGENCE_TEST_LIVE" => "FALSE",
-    "IPINTELLIGENCE_APIKEY" => "NONE",
+    "IP_INTELLIGENCE_TEST_USAGE_ENTID" => {},
+    "IP_INTELLIGENCE_TEST_LIVE" => "FALSE",
+    "IP_INTELLIGENCE_APIKEY" => "NONE",
   })
 
-  live = env["IPINTELLIGENCE_TEST_LIVE"] == "TRUE"
+  live = env["IP_INTELLIGENCE_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["IPINTELLIGENCE_APIKEY"],
+      "apikey" => env["IP_INTELLIGENCE_APIKEY"],
     }
     client = IpIntelligenceSDK.new(merged_opts)
     return {

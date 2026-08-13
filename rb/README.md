@@ -36,7 +36,7 @@ client = IpIntelligenceSDK.new({
 
 ```ruby
 begin
-  # load returns the bare Api record (raises on error).
+  # load returns the ENTITY — call data_get for the Api record (raises on error).
   api = client.Api.load({ "id" => "example_id" })
   puts api
 rescue => err
@@ -122,7 +122,8 @@ client = IpIntelligenceSDK.test({
   "entity" => { "api" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 api = client.Api.load({ "id" => "test01" })
 puts api
 ```
@@ -264,7 +265,7 @@ API path: `/api/{ip}`
 | `current_usage` |  |
 | `monthly_limit` |  |
 | `next_reset` |  |
-| `remaining_request` |  |
+| `remaining_requests` |  |
 | `usage_percentage` |  |
 
 Operations: Load.
@@ -303,7 +304,7 @@ Create an instance: `api = client.Api`
 #### Example: Load
 
 ```ruby
-# load returns the bare Api record (raises on error).
+# load returns the ENTITY — call data_get for the Api record (raises on error).
 api = client.Api.load({ "id" => "api_id" })
 ```
 
@@ -326,13 +327,13 @@ Create an instance: `usage = client.Usage`
 | `current_usage` | `Integer` |  |
 | `monthly_limit` | `Integer` |  |
 | `next_reset` | `String` |  |
-| `remaining_request` | `Integer` |  |
+| `remaining_requests` | `Integer` |  |
 | `usage_percentage` | `Float` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Usage record (raises on error).
+# load returns the ENTITY — call data_get for the Usage record (raises on error).
 usage = client.Usage.load()
 ```
 
