@@ -149,7 +149,7 @@ class FtHarness
     public static function hasFeature(string $name): bool
     {
         if (self::$feature_config === null) {
-            $config = IpIntelligenceConfig::make_config();
+            $config = IpIntelligenceConfig::shared_config();
             $f = $config['feature'] ?? [];
             self::$feature_config = is_array($f) ? $f : [];
         }

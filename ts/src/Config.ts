@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://addr.zone',
+    base: "https://addr.zone",
 
     auth: {
       prefix: '',
@@ -62,67 +62,47 @@ class Config {
     "api": {
       "fields": [
         {
-          "active": true,
           "name": "asn_handle",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "asn_id",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "country_code",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "country_name",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ip",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "is",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 5
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "malicious",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 6
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "metadata",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 7
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "trust_score",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 8
+          "type": "`$INTEGER`"
         }
       ],
       "name": "api",
@@ -132,28 +112,23 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "1.1.1.1",
                     "kind": "param",
                     "name": "id",
                     "orig": "ip",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [
                   {
-                    "active": true,
                     "example": "zone_your_api_key_here",
                     "kind": "query",
                     "name": "api_key",
                     "orig": "api_key",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -179,11 +154,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -193,46 +166,34 @@ class Config {
     "usage": {
       "fields": [
         {
-          "active": true,
           "name": "account_level",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "current_usage",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "monthly_limit",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 2
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "next_reset",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "remaining_requests",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 4
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "usage_percentage",
           "req": true,
-          "type": "`$NUMBER`",
-          "index$": 5
+          "type": "`$NUMBER`"
         }
       ],
       "name": "usage",
@@ -242,7 +203,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -255,11 +215,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {

@@ -5,6 +5,29 @@ declare(strict_types=1);
 
 class IpIntelligenceConfig
 {
+    /** @var array<string,mixed>|null */
+    private static ?array $shared_config = null;
+
+    /**
+     * Return the process-wide config, built once on first use. The SDK reads
+     * the config on every request and never writes to it, so one instance is
+     * shared by every client rather than rebuilt per client.
+     *
+     * PHP arrays are copy-on-write, so callers that do mutate the result get
+     * their own copy and cannot disturb the shared one.
+     */
+    public static function shared_config(): array
+    {
+        if (self::$shared_config === null) {
+            self::$shared_config = self::make_config();
+        }
+        return self::$shared_config;
+    }
+
+    /**
+     * Build a fresh, fully materialised config array. Every call rebuilds the
+     * whole structure, so prefer shared_config unless you need a private copy.
+     */
     public static function make_config(): array
     {
         return [
@@ -35,67 +58,47 @@ class IpIntelligenceConfig
         'api' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'asn_handle',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'asn_id',
               'req' => true,
               'type' => '`$INTEGER`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'country_code',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 2,
             ],
             [
-              'active' => true,
               'name' => 'country_name',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 3,
             ],
             [
-              'active' => true,
               'name' => 'ip',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 4,
             ],
             [
-              'active' => true,
               'name' => 'is',
               'req' => true,
               'type' => '`$ARRAY`',
-              'index$' => 5,
             ],
             [
-              'active' => true,
               'name' => 'malicious',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 6,
             ],
             [
-              'active' => true,
               'name' => 'metadata',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 7,
             ],
             [
-              'active' => true,
               'name' => 'trust_score',
               'req' => true,
               'type' => '`$INTEGER`',
-              'index$' => 8,
             ],
           ],
           'name' => 'api',
@@ -105,28 +108,23 @@ class IpIntelligenceConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'example' => '1.1.1.1',
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'ip',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'zone_your_api_key_here',
                         'kind' => 'query',
                         'name' => 'api_key',
                         'orig' => 'api_key',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                     ],
@@ -153,10 +151,8 @@ class IpIntelligenceConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -166,46 +162,34 @@ class IpIntelligenceConfig
         'usage' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'account_level',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'current_usage',
               'req' => true,
               'type' => '`$INTEGER`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'monthly_limit',
               'req' => true,
               'type' => '`$INTEGER`',
-              'index$' => 2,
             ],
             [
-              'active' => true,
               'name' => 'next_reset',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 3,
             ],
             [
-              'active' => true,
               'name' => 'remaining_requests',
               'req' => true,
               'type' => '`$INTEGER`',
-              'index$' => 4,
             ],
             [
-              'active' => true,
               'name' => 'usage_percentage',
               'req' => true,
               'type' => '`$NUMBER`',
-              'index$' => 5,
             ],
           ],
           'name' => 'usage',
@@ -215,7 +199,6 @@ class IpIntelligenceConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -229,10 +212,8 @@ class IpIntelligenceConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [

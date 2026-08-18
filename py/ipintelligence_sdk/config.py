@@ -1,7 +1,30 @@
 # IpIntelligence SDK configuration
 
 
+_shared_config = None
+
+
+def shared_config():
+    """Return the process-wide config, built once on first use.
+
+    The SDK reads the config on every request and never writes to it, so one
+    instance is shared by every client rather than rebuilt per client.
+
+    The returned dict is shared: treat it as read-only. Callers that need to
+    mutate should use make_config, which always returns a fresh copy.
+    """
+    global _shared_config
+    if _shared_config is None:
+        _shared_config = make_config()
+    return _shared_config
+
+
 def make_config():
+    """Build a fresh, fully materialised config dict.
+
+    Every call rebuilds the whole structure, so prefer shared_config unless
+    you need a private copy you intend to mutate.
+    """
     return {
         "main": {
             "name": "IpIntelligence",
@@ -30,67 +53,47 @@ def make_config():
       "api": {
         "fields": [
           {
-            "active": True,
             "name": "asn_handle",
             "req": True,
             "type": "`$STRING`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "asn_id",
             "req": True,
             "type": "`$INTEGER`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "country_code",
             "req": True,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "country_name",
             "req": True,
             "type": "`$STRING`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "ip",
             "req": True,
             "type": "`$STRING`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "is",
             "req": True,
             "type": "`$ARRAY`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "malicious",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "metadata",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "trust_score",
             "req": True,
             "type": "`$INTEGER`",
-            "index$": 8,
           },
         ],
         "name": "api",
@@ -100,28 +103,23 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": "1.1.1.1",
                       "kind": "param",
                       "name": "id",
                       "orig": "ip",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                   "query": [
                     {
-                      "active": True,
                       "example": "zone_your_api_key_here",
                       "kind": "query",
                       "name": "api_key",
                       "orig": "api_key",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -148,10 +146,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -161,46 +157,34 @@ def make_config():
       "usage": {
         "fields": [
           {
-            "active": True,
             "name": "account_level",
             "req": True,
             "type": "`$STRING`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "current_usage",
             "req": True,
             "type": "`$INTEGER`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "monthly_limit",
             "req": True,
             "type": "`$INTEGER`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "next_reset",
             "req": True,
             "type": "`$STRING`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "remaining_requests",
             "req": True,
             "type": "`$INTEGER`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "usage_percentage",
             "req": True,
             "type": "`$NUMBER`",
-            "index$": 5,
           },
         ],
         "name": "usage",
@@ -210,7 +194,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -224,10 +207,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {

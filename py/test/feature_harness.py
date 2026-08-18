@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from ipintelligence_sdk.config import make_config
+from ipintelligence_sdk.config import shared_config
 from ipintelligence_sdk.features import _make_feature
 from ipintelligence_sdk.core.control import IpIntelligenceControl
 from ipintelligence_sdk.core.error import IpIntelligenceError
@@ -24,7 +24,7 @@ from ipintelligence_sdk.core.spec import IpIntelligenceSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

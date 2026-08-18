@@ -15,7 +15,7 @@ require_relative "../IpIntelligence_sdk"
 module IpIntelligenceFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = IpIntelligenceConfig.make_config["feature"]
+    f = IpIntelligenceConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

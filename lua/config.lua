@@ -1,5 +1,8 @@
 -- IpIntelligence SDK configuration
 
+-- Build a fresh, fully materialised config table. Every call rebuilds the
+-- whole structure, so prefer require("config_shared") unless you need a
+-- private copy you intend to mutate.
 local function make_config()
   return {
     main = {
@@ -29,67 +32,47 @@ local function make_config()
       ["api"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "asn_handle",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "asn_id",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "country_code",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "country_name",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "ip",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "is",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 5,
           },
           {
-            ["active"] = true,
             ["name"] = "malicious",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 6,
           },
           {
-            ["active"] = true,
             ["name"] = "metadata",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 7,
           },
           {
-            ["active"] = true,
             ["name"] = "trust_score",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 8,
           },
         },
         ["name"] = "api",
@@ -99,28 +82,23 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "1.1.1.1",
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "ip",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "zone_your_api_key_here",
                       ["kind"] = "query",
                       ["name"] = "api_key",
                       ["orig"] = "api_key",
-                      ["reqd"] = false,
                       ["type"] = "`$STRING`",
                     },
                   },
@@ -147,10 +125,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
@@ -160,46 +136,34 @@ local function make_config()
       ["usage"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "account_level",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "current_usage",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "monthly_limit",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "next_reset",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "remaining_requests",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "usage_percentage",
             ["req"] = true,
             ["type"] = "`$NUMBER`",
-            ["index$"] = 5,
           },
         },
         ["name"] = "usage",
@@ -209,7 +173,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
@@ -223,10 +186,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
