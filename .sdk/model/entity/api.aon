@@ -8,46 +8,55 @@ main: kit: entity: api: {
     {
       name: "asn_handle"
       req: true
+      short: "Network operator name/handle"
       type: "`$STRING`"
     }
     {
       name: "asn_id"
       req: true
+      short: "Autonomous System Number of the network operator"
       type: "`$INTEGER`"
     }
     {
       name: "country_code"
       req: true
+      short: "Two-letter ISO country code"
       type: "`$STRING`"
     }
     {
       name: "country_name"
       req: true
+      short: "Full country name"
       type: "`$STRING`"
     }
     {
       name: "ip"
       req: true
+      short: "The IP address that was analyzed"
       type: "`$STRING`"
     }
     {
       name: "is"
       req: true
+      short: "Array of classifications for this IP."
       type: "`$ARRAY`"
     }
     {
       name: "malicious"
       req: false
+      short: "Information about malicious activity if IP is flagged"
       type: "`$OBJECT`"
     }
     {
       name: "metadata"
       req: false
+      short: "Additional contextual information about the IP, structure varies based on classifications"
       type: "`$OBJECT`"
     }
     {
       name: "trust_score"
       req: true
+      short: "Trust rating from 0-10, where 10 is most trustworthy."
       type: "`$INTEGER`"
     }
   ]

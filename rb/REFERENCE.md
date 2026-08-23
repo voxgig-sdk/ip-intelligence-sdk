@@ -98,15 +98,15 @@ api = client.Api
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asn_handle` | `String` | Yes |  |
-| `asn_id` | `Integer` | Yes |  |
-| `country_code` | `String` | Yes |  |
-| `country_name` | `String` | Yes |  |
-| `ip` | `String` | Yes |  |
-| `is` | `Array` | Yes |  |
-| `malicious` | `Hash` | No |  |
-| `metadata` | `Hash` | No |  |
-| `trust_score` | `Integer` | Yes |  |
+| `asn_handle` | `String` | Yes | Network operator name/handle |
+| `asn_id` | `Integer` | Yes | Autonomous System Number of the network operator |
+| `country_code` | `String` | Yes | Two-letter ISO country code |
+| `country_name` | `String` | Yes | Full country name |
+| `ip` | `String` | Yes | The IP address that was analyzed |
+| `is` | `Array` | Yes | Array of classifications for this IP. |
+| `malicious` | `Hash` | No | Information about malicious activity if IP is flagged |
+| `metadata` | `Hash` | No | Additional contextual information about the IP, structure varies based on classifications |
+| `trust_score` | `Integer` | Yes | Trust rating from 0-10, where 10 is most trustworthy. |
 
 ### Operations
 
@@ -158,12 +158,12 @@ usage = client.Usage
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `account_level` | `String` | Yes |  |
-| `current_usage` | `Integer` | Yes |  |
-| `monthly_limit` | `Integer` | Yes |  |
-| `next_reset` | `String` | Yes |  |
-| `remaining_requests` | `Integer` | Yes |  |
-| `usage_percentage` | `Float` | Yes |  |
+| `account_level` | `String` | Yes | Account tier level |
+| `current_usage` | `Integer` | Yes | Number of API requests used in the current billing period |
+| `monthly_limit` | `Integer` | Yes | Total monthly request limit for this account |
+| `next_reset` | `String` | Yes | ISO 8601 timestamp when the usage counter resets |
+| `remaining_requests` | `Integer` | Yes | Number of requests remaining in the current billing period |
+| `usage_percentage` | `Float` | Yes | Percentage of monthly limit used |
 
 ### Operations
 

@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'IpIntelligence',
+        slug: "ip-intelligence",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -64,44 +75,53 @@ class Config {
         {
           "name": "asn_handle",
           "req": true,
+          "short": "Network operator name/handle",
           "type": "`$STRING`"
         },
         {
           "name": "asn_id",
           "req": true,
+          "short": "Autonomous System Number of the network operator",
           "type": "`$INTEGER`"
         },
         {
           "name": "country_code",
           "req": true,
+          "short": "Two-letter ISO country code",
           "type": "`$STRING`"
         },
         {
           "name": "country_name",
           "req": true,
+          "short": "Full country name",
           "type": "`$STRING`"
         },
         {
           "name": "ip",
           "req": true,
+          "short": "The IP address that was analyzed",
           "type": "`$STRING`"
         },
         {
           "name": "is",
           "req": true,
+          "short": "Array of classifications for this IP.",
           "type": "`$ARRAY`"
         },
         {
           "name": "malicious",
+          "short": "Information about malicious activity if IP is flagged",
           "type": "`$OBJECT`"
         },
         {
           "name": "metadata",
+          "short": "Additional contextual information about the IP, structure varies based on classifications",
           "type": "`$OBJECT`"
         },
         {
           "name": "trust_score",
           "req": true,
+          "short": "Trust rating from 0-10, where 10 is most trustworthy.",
           "type": "`$INTEGER`"
         }
       ],
@@ -168,31 +188,37 @@ class Config {
         {
           "name": "account_level",
           "req": true,
+          "short": "Account tier level",
           "type": "`$STRING`"
         },
         {
           "name": "current_usage",
           "req": true,
+          "short": "Number of API requests used in the current billing period",
           "type": "`$INTEGER`"
         },
         {
           "name": "monthly_limit",
           "req": true,
+          "short": "Total monthly request limit for this account",
           "type": "`$INTEGER`"
         },
         {
           "name": "next_reset",
           "req": true,
+          "short": "ISO 8601 timestamp when the usage counter resets",
           "type": "`$STRING`"
         },
         {
           "name": "remaining_requests",
           "req": true,
+          "short": "Number of requests remaining in the current billing period",
           "type": "`$INTEGER`"
         },
         {
           "name": "usage_percentage",
           "req": true,
+          "short": "Percentage of monthly limit used",
           "type": "`$NUMBER`"
         }
       ],

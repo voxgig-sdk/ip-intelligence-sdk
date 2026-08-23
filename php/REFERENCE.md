@@ -97,15 +97,15 @@ $api = $client->Api();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asn_handle` | `string` | Yes |  |
-| `asn_id` | `int` | Yes |  |
-| `country_code` | `string` | Yes |  |
-| `country_name` | `string` | Yes |  |
-| `ip` | `string` | Yes |  |
-| `is` | `array` | Yes |  |
-| `malicious` | `array` | No |  |
-| `metadata` | `array` | No |  |
-| `trust_score` | `int` | Yes |  |
+| `asn_handle` | `string` | Yes | Network operator name/handle |
+| `asn_id` | `int` | Yes | Autonomous System Number of the network operator |
+| `country_code` | `string` | Yes | Two-letter ISO country code |
+| `country_name` | `string` | Yes | Full country name |
+| `ip` | `string` | Yes | The IP address that was analyzed |
+| `is` | `array` | Yes | Array of classifications for this IP. |
+| `malicious` | `array` | No | Information about malicious activity if IP is flagged |
+| `metadata` | `array` | No | Additional contextual information about the IP, structure varies based on classifications |
+| `trust_score` | `int` | Yes | Trust rating from 0-10, where 10 is most trustworthy. |
 
 ### Operations
 
@@ -157,12 +157,12 @@ $usage = $client->Usage();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `account_level` | `string` | Yes |  |
-| `current_usage` | `int` | Yes |  |
-| `monthly_limit` | `int` | Yes |  |
-| `next_reset` | `string` | Yes |  |
-| `remaining_requests` | `int` | Yes |  |
-| `usage_percentage` | `float` | Yes |  |
+| `account_level` | `string` | Yes | Account tier level |
+| `current_usage` | `int` | Yes | Number of API requests used in the current billing period |
+| `monthly_limit` | `int` | Yes | Total monthly request limit for this account |
+| `next_reset` | `string` | Yes | ISO 8601 timestamp when the usage counter resets |
+| `remaining_requests` | `int` | Yes | Number of requests remaining in the current billing period |
+| `usage_percentage` | `float` | Yes | Percentage of monthly limit used |
 
 ### Operations
 

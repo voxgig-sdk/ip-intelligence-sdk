@@ -95,15 +95,15 @@ local api = client:Api(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asn_handle` | `string` | Yes |  |
-| `asn_id` | `number` | Yes |  |
-| `country_code` | `string` | Yes |  |
-| `country_name` | `string` | Yes |  |
-| `ip` | `string` | Yes |  |
-| `is` | `table` | Yes |  |
-| `malicious` | `table` | No |  |
-| `metadata` | `table` | No |  |
-| `trust_score` | `number` | Yes |  |
+| `asn_handle` | `string` | Yes | Network operator name/handle |
+| `asn_id` | `number` | Yes | Autonomous System Number of the network operator |
+| `country_code` | `string` | Yes | Two-letter ISO country code |
+| `country_name` | `string` | Yes | Full country name |
+| `ip` | `string` | Yes | The IP address that was analyzed |
+| `is` | `table` | Yes | Array of classifications for this IP. |
+| `malicious` | `table` | No | Information about malicious activity if IP is flagged |
+| `metadata` | `table` | No | Additional contextual information about the IP, structure varies based on classifications |
+| `trust_score` | `number` | Yes | Trust rating from 0-10, where 10 is most trustworthy. |
 
 ### Operations
 
@@ -155,12 +155,12 @@ local usage = client:Usage(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `account_level` | `string` | Yes |  |
-| `current_usage` | `number` | Yes |  |
-| `monthly_limit` | `number` | Yes |  |
-| `next_reset` | `string` | Yes |  |
-| `remaining_requests` | `number` | Yes |  |
-| `usage_percentage` | `number` | Yes |  |
+| `account_level` | `string` | Yes | Account tier level |
+| `current_usage` | `number` | Yes | Number of API requests used in the current billing period |
+| `monthly_limit` | `number` | Yes | Total monthly request limit for this account |
+| `next_reset` | `string` | Yes | ISO 8601 timestamp when the usage counter resets |
+| `remaining_requests` | `number` | Yes | Number of requests remaining in the current billing period |
+| `usage_percentage` | `number` | Yes | Percentage of monthly limit used |
 
 ### Operations
 

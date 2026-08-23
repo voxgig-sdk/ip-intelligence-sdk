@@ -92,15 +92,15 @@ api = client.Api()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asn_handle` | `str` | Yes |  |
-| `asn_id` | `int` | Yes |  |
-| `country_code` | `str` | Yes |  |
-| `country_name` | `str` | Yes |  |
-| `ip` | `str` | Yes |  |
-| `is` | `list` | Yes |  |
-| `malicious` | `dict` | No |  |
-| `metadata` | `dict` | No |  |
-| `trust_score` | `int` | Yes |  |
+| `asn_handle` | `str` | Yes | Network operator name/handle |
+| `asn_id` | `int` | Yes | Autonomous System Number of the network operator |
+| `country_code` | `str` | Yes | Two-letter ISO country code |
+| `country_name` | `str` | Yes | Full country name |
+| `ip` | `str` | Yes | The IP address that was analyzed |
+| `is` | `list` | Yes | Array of classifications for this IP. |
+| `malicious` | `dict` | No | Information about malicious activity if IP is flagged |
+| `metadata` | `dict` | No | Additional contextual information about the IP, structure varies based on classifications |
+| `trust_score` | `int` | Yes | Trust rating from 0-10, where 10 is most trustworthy. |
 
 ### Operations
 
@@ -151,12 +151,12 @@ usage = client.Usage()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `account_level` | `str` | Yes |  |
-| `current_usage` | `int` | Yes |  |
-| `monthly_limit` | `int` | Yes |  |
-| `next_reset` | `str` | Yes |  |
-| `remaining_requests` | `int` | Yes |  |
-| `usage_percentage` | `float` | Yes |  |
+| `account_level` | `str` | Yes | Account tier level |
+| `current_usage` | `int` | Yes | Number of API requests used in the current billing period |
+| `monthly_limit` | `int` | Yes | Total monthly request limit for this account |
+| `next_reset` | `str` | Yes | ISO 8601 timestamp when the usage counter resets |
+| `remaining_requests` | `int` | Yes | Number of requests remaining in the current billing period |
+| `usage_percentage` | `float` | Yes | Percentage of monthly limit used |
 
 ### Operations
 

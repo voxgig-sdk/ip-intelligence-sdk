@@ -103,15 +103,15 @@ fmt.Println(api.GetName()) // "api"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asn_handle` | `string` | Yes |  |
-| `asn_id` | `int` | Yes |  |
-| `country_code` | `string` | Yes |  |
-| `country_name` | `string` | Yes |  |
-| `ip` | `string` | Yes |  |
-| `is` | `[]any` | Yes |  |
-| `malicious` | `map[string]any` | No |  |
-| `metadata` | `map[string]any` | No |  |
-| `trust_score` | `int` | Yes |  |
+| `asn_handle` | `string` | Yes | Network operator name/handle |
+| `asn_id` | `int` | Yes | Autonomous System Number of the network operator |
+| `country_code` | `string` | Yes | Two-letter ISO country code |
+| `country_name` | `string` | Yes | Full country name |
+| `ip` | `string` | Yes | The IP address that was analyzed |
+| `is` | `[]any` | Yes | Array of classifications for this IP. |
+| `malicious` | `map[string]any` | No | Information about malicious activity if IP is flagged |
+| `metadata` | `map[string]any` | No | Additional contextual information about the IP, structure varies based on classifications |
+| `trust_score` | `int` | Yes | Trust rating from 0-10, where 10 is most trustworthy. |
 
 ### Operations
 
@@ -162,12 +162,12 @@ fmt.Println(usage.GetName()) // "usage"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `account_level` | `string` | Yes |  |
-| `current_usage` | `int` | Yes |  |
-| `monthly_limit` | `int` | Yes |  |
-| `next_reset` | `string` | Yes |  |
-| `remaining_requests` | `int` | Yes |  |
-| `usage_percentage` | `float64` | Yes |  |
+| `account_level` | `string` | Yes | Account tier level |
+| `current_usage` | `int` | Yes | Number of API requests used in the current billing period |
+| `monthly_limit` | `int` | Yes | Total monthly request limit for this account |
+| `next_reset` | `string` | Yes | ISO 8601 timestamp when the usage counter resets |
+| `remaining_requests` | `int` | Yes | Number of requests remaining in the current billing period |
+| `usage_percentage` | `float64` | Yes | Percentage of monthly limit used |
 
 ### Operations
 

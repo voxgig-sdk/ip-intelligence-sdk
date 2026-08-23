@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "IpIntelligence",
+            "slug": "ip-intelligence",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -55,44 +58,53 @@ def make_config():
           {
             "name": "asn_handle",
             "req": True,
+            "short": "Network operator name/handle",
             "type": "`$STRING`",
           },
           {
             "name": "asn_id",
             "req": True,
+            "short": "Autonomous System Number of the network operator",
             "type": "`$INTEGER`",
           },
           {
             "name": "country_code",
             "req": True,
+            "short": "Two-letter ISO country code",
             "type": "`$STRING`",
           },
           {
             "name": "country_name",
             "req": True,
+            "short": "Full country name",
             "type": "`$STRING`",
           },
           {
             "name": "ip",
             "req": True,
+            "short": "The IP address that was analyzed",
             "type": "`$STRING`",
           },
           {
             "name": "is",
             "req": True,
+            "short": "Array of classifications for this IP.",
             "type": "`$ARRAY`",
           },
           {
             "name": "malicious",
+            "short": "Information about malicious activity if IP is flagged",
             "type": "`$OBJECT`",
           },
           {
             "name": "metadata",
+            "short": "Additional contextual information about the IP, structure varies based on classifications",
             "type": "`$OBJECT`",
           },
           {
             "name": "trust_score",
             "req": True,
+            "short": "Trust rating from 0-10, where 10 is most trustworthy.",
             "type": "`$INTEGER`",
           },
         ],
@@ -159,31 +171,37 @@ def make_config():
           {
             "name": "account_level",
             "req": True,
+            "short": "Account tier level",
             "type": "`$STRING`",
           },
           {
             "name": "current_usage",
             "req": True,
+            "short": "Number of API requests used in the current billing period",
             "type": "`$INTEGER`",
           },
           {
             "name": "monthly_limit",
             "req": True,
+            "short": "Total monthly request limit for this account",
             "type": "`$INTEGER`",
           },
           {
             "name": "next_reset",
             "req": True,
+            "short": "ISO 8601 timestamp when the usage counter resets",
             "type": "`$STRING`",
           },
           {
             "name": "remaining_requests",
             "req": True,
+            "short": "Number of requests remaining in the current billing period",
             "type": "`$INTEGER`",
           },
           {
             "name": "usage_percentage",
             "req": True,
+            "short": "Percentage of monthly limit used",
             "type": "`$NUMBER`",
           },
         ],

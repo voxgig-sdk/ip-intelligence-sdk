@@ -247,15 +247,15 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `asn_handle` |  |
-| `asn_id` |  |
-| `country_code` |  |
-| `country_name` |  |
-| `ip` |  |
-| `is` |  |
-| `malicious` |  |
-| `metadata` |  |
-| `trust_score` |  |
+| `asn_handle` | Network operator name/handle |
+| `asn_id` | Autonomous System Number of the network operator |
+| `country_code` | Two-letter ISO country code |
+| `country_name` | Full country name |
+| `ip` | The IP address that was analyzed |
+| `is` | Array of classifications for this IP. |
+| `malicious` | Information about malicious activity if IP is flagged |
+| `metadata` | Additional contextual information about the IP, structure varies based on classifications |
+| `trust_score` | Trust rating from 0-10, where 10 is most trustworthy. |
 
 Operations: Load.
 
@@ -265,12 +265,12 @@ API path: `/api/{ip}`
 
 | Field | Description |
 | --- | --- |
-| `account_level` |  |
-| `current_usage` |  |
-| `monthly_limit` |  |
-| `next_reset` |  |
-| `remaining_requests` |  |
-| `usage_percentage` |  |
+| `account_level` | Account tier level |
+| `current_usage` | Number of API requests used in the current billing period |
+| `monthly_limit` | Total monthly request limit for this account |
+| `next_reset` | ISO 8601 timestamp when the usage counter resets |
+| `remaining_requests` | Number of requests remaining in the current billing period |
+| `usage_percentage` | Percentage of monthly limit used |
 
 Operations: Load.
 
@@ -295,15 +295,15 @@ Create an instance: `api = client.Api()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asn_handle` | `str` |  |
-| `asn_id` | `int` |  |
-| `country_code` | `str` |  |
-| `country_name` | `str` |  |
-| `ip` | `str` |  |
-| `is` | `list` |  |
-| `malicious` | `dict` |  |
-| `metadata` | `dict` |  |
-| `trust_score` | `int` |  |
+| `asn_handle` | `str` | Network operator name/handle |
+| `asn_id` | `int` | Autonomous System Number of the network operator |
+| `country_code` | `str` | Two-letter ISO country code |
+| `country_name` | `str` | Full country name |
+| `ip` | `str` | The IP address that was analyzed |
+| `is` | `list` | Array of classifications for this IP. |
+| `malicious` | `dict` | Information about malicious activity if IP is flagged |
+| `metadata` | `dict` | Additional contextual information about the IP, structure varies based on classifications |
+| `trust_score` | `int` | Trust rating from 0-10, where 10 is most trustworthy. |
 
 #### Example: Load
 
@@ -326,12 +326,12 @@ Create an instance: `usage = client.Usage()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `account_level` | `str` |  |
-| `current_usage` | `int` |  |
-| `monthly_limit` | `int` |  |
-| `next_reset` | `str` |  |
-| `remaining_requests` | `int` |  |
-| `usage_percentage` | `float` |  |
+| `account_level` | `str` | Account tier level |
+| `current_usage` | `int` | Number of API requests used in the current billing period |
+| `monthly_limit` | `int` | Total monthly request limit for this account |
+| `next_reset` | `str` | ISO 8601 timestamp when the usage counter resets |
+| `remaining_requests` | `int` | Number of requests remaining in the current billing period |
+| `usage_percentage` | `float` | Percentage of monthly limit used |
 
 #### Example: Load
 

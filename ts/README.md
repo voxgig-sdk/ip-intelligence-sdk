@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -292,15 +292,15 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `asn_handle` |  |
-| `asn_id` |  |
-| `country_code` |  |
-| `country_name` |  |
-| `ip` |  |
-| `is` |  |
-| `malicious` |  |
-| `metadata` |  |
-| `trust_score` |  |
+| `asn_handle` | Network operator name/handle |
+| `asn_id` | Autonomous System Number of the network operator |
+| `country_code` | Two-letter ISO country code |
+| `country_name` | Full country name |
+| `ip` | The IP address that was analyzed |
+| `is` | Array of classifications for this IP. |
+| `malicious` | Information about malicious activity if IP is flagged |
+| `metadata` | Additional contextual information about the IP, structure varies based on classifications |
+| `trust_score` | Trust rating from 0-10, where 10 is most trustworthy. |
 
 Operations: load.
 
@@ -310,12 +310,12 @@ API path: `/api/{ip}`
 
 | Field | Description |
 | --- | --- |
-| `account_level` |  |
-| `current_usage` |  |
-| `monthly_limit` |  |
-| `next_reset` |  |
-| `remaining_requests` |  |
-| `usage_percentage` |  |
+| `account_level` | Account tier level |
+| `current_usage` | Number of API requests used in the current billing period |
+| `monthly_limit` | Total monthly request limit for this account |
+| `next_reset` | ISO 8601 timestamp when the usage counter resets |
+| `remaining_requests` | Number of requests remaining in the current billing period |
+| `usage_percentage` | Percentage of monthly limit used |
 
 Operations: load.
 
@@ -340,15 +340,15 @@ Create an instance: `const api = client.Api()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asn_handle` | `string` |  |
-| `asn_id` | `number` |  |
-| `country_code` | `string` |  |
-| `country_name` | `string` |  |
-| `ip` | `string` |  |
-| `is` | `any[]` |  |
-| `malicious` | `Record<string, any>` |  |
-| `metadata` | `Record<string, any>` |  |
-| `trust_score` | `number` |  |
+| `asn_handle` | `string` | Network operator name/handle |
+| `asn_id` | `number` | Autonomous System Number of the network operator |
+| `country_code` | `string` | Two-letter ISO country code |
+| `country_name` | `string` | Full country name |
+| `ip` | `string` | The IP address that was analyzed |
+| `is` | `any[]` | Array of classifications for this IP. |
+| `malicious` | `Record<string, any>` | Information about malicious activity if IP is flagged |
+| `metadata` | `Record<string, any>` | Additional contextual information about the IP, structure varies based on classifications |
+| `trust_score` | `number` | Trust rating from 0-10, where 10 is most trustworthy. |
 
 #### Example: Load
 
@@ -371,12 +371,12 @@ Create an instance: `const usage = client.Usage()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `account_level` | `string` |  |
-| `current_usage` | `number` |  |
-| `monthly_limit` | `number` |  |
-| `next_reset` | `string` |  |
-| `remaining_requests` | `number` |  |
-| `usage_percentage` | `number` |  |
+| `account_level` | `string` | Account tier level |
+| `current_usage` | `number` | Number of API requests used in the current billing period |
+| `monthly_limit` | `number` | Total monthly request limit for this account |
+| `next_reset` | `string` | ISO 8601 timestamp when the usage counter resets |
+| `remaining_requests` | `number` | Number of requests remaining in the current billing period |
+| `usage_percentage` | `number` | Percentage of monthly limit used |
 
 #### Example: Load
 
