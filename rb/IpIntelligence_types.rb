@@ -22,6 +22,9 @@
 # @!attribute [rw] country_name
 #   @return [String]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] ip
 #   @return [String]
 #
@@ -41,6 +44,7 @@ Api = Struct.new(
   :asn_id,
   :country_code,
   :country_name,
+  :id,
   :ip,
   :is,
   :malicious,

@@ -257,6 +257,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | `asn_id` | Autonomous System Number of the network operator |
 | `country_code` | Two-letter ISO country code |
 | `country_name` | Full country name |
+| `id` |  |
 | `ip` | The IP address that was analyzed |
 | `is` | Array of classifications for this IP. |
 | `malicious` | Information about malicious activity if IP is flagged |
@@ -305,6 +306,7 @@ Create an instance: `$api = $client->Api();`
 | `asn_id` | `int` | Autonomous System Number of the network operator |
 | `country_code` | `string` | Two-letter ISO country code |
 | `country_name` | `string` | Full country name |
+| `id` | `string` |  |
 | `ip` | `string` | The IP address that was analyzed |
 | `is` | `array` | Array of classifications for this IP. |
 | `malicious` | `array` | Information about malicious activity if IP is flagged |

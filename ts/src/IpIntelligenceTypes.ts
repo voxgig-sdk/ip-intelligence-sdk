@@ -10,6 +10,7 @@ export interface Api {
   asn_id: number
   country_code: string
   country_name: string
+  id?: string
   ip: string
   is: any[]
   malicious?: Record<string, any>

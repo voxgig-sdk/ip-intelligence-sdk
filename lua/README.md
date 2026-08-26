@@ -234,6 +234,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | `asn_id` | Autonomous System Number of the network operator |
 | `country_code` | Two-letter ISO country code |
 | `country_name` | Full country name |
+| `id` |  |
 | `ip` | The IP address that was analyzed |
 | `is` | Array of classifications for this IP. |
 | `malicious` | Information about malicious activity if IP is flagged |
@@ -282,6 +283,7 @@ Create an instance: `local api = client:Api(nil)`
 | `asn_id` | `number` | Autonomous System Number of the network operator |
 | `country_code` | `string` | Two-letter ISO country code |
 | `country_name` | `string` | Full country name |
+| `id` | `string` |  |
 | `ip` | `string` | The IP address that was analyzed |
 | `is` | `table` | Array of classifications for this IP. |
 | `malicious` | `table` | Information about malicious activity if IP is flagged |

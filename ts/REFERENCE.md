@@ -133,6 +133,7 @@ const api = client.Api()
 | `asn_id` | `number` | Yes | Autonomous System Number of the network operator |
 | `country_code` | `string` | Yes | Two-letter ISO country code |
 | `country_name` | `string` | Yes | Full country name |
+| `id` | `string` | No |  |
 | `ip` | `string` | Yes | The IP address that was analyzed |
 | `is` | `any[]` | Yes | Array of classifications for this IP. |
 | `malicious` | `Record<string, any>` | No | Information about malicious activity if IP is flagged |

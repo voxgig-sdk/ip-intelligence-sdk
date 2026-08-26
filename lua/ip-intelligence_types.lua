@@ -11,6 +11,7 @@
 ---@field asn_id number
 ---@field country_code string
 ---@field country_name string
+---@field id? string
 ---@field ip string
 ---@field is table
 ---@field malicious? table

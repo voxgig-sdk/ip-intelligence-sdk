@@ -99,6 +99,7 @@ local api = client:Api(nil)
 | `asn_id` | `number` | Yes | Autonomous System Number of the network operator |
 | `country_code` | `string` | Yes | Two-letter ISO country code |
 | `country_name` | `string` | Yes | Full country name |
+| `id` | `string` | No |  |
 | `ip` | `string` | Yes | The IP address that was analyzed |
 | `is` | `table` | Yes | Array of classifications for this IP. |
 | `malicious` | `table` | No | Information about malicious activity if IP is flagged |

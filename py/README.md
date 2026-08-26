@@ -251,6 +251,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | `asn_id` | Autonomous System Number of the network operator |
 | `country_code` | Two-letter ISO country code |
 | `country_name` | Full country name |
+| `id` |  |
 | `ip` | The IP address that was analyzed |
 | `is` | Array of classifications for this IP. |
 | `malicious` | Information about malicious activity if IP is flagged |
@@ -299,6 +300,7 @@ Create an instance: `api = client.Api()`
 | `asn_id` | `int` | Autonomous System Number of the network operator |
 | `country_code` | `str` | Two-letter ISO country code |
 | `country_name` | `str` | Full country name |
+| `id` | `str` |  |
 | `ip` | `str` | The IP address that was analyzed |
 | `is` | `list` | Array of classifications for this IP. |
 | `malicious` | `dict` | Information about malicious activity if IP is flagged |

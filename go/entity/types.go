@@ -18,6 +18,7 @@ type Api struct {
 	AsnId int `json:"asn_id"`
 	CountryCode string `json:"country_code"`
 	CountryName string `json:"country_name"`
+	Id *string `json:"id,omitempty"`
 	Ip string `json:"ip"`
 	Is []any `json:"is"`
 	Malicious *map[string]any `json:"malicious,omitempty"`

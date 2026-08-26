@@ -96,6 +96,7 @@ api = client.Api()
 | `asn_id` | `int` | Yes | Autonomous System Number of the network operator |
 | `country_code` | `str` | Yes | Two-letter ISO country code |
 | `country_name` | `str` | Yes | Full country name |
+| `id` | `str` | No |  |
 | `ip` | `str` | Yes | The IP address that was analyzed |
 | `is` | `list` | Yes | Array of classifications for this IP. |
 | `malicious` | `dict` | No | Information about malicious activity if IP is flagged |

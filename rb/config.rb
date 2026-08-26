@@ -28,6 +28,7 @@ module IpIntelligenceConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -68,6 +69,10 @@ module IpIntelligenceConfig
               "name" => "country_name",
               "req" => true,
               "short" => "Full country name",
+              "type" => "`$STRING`",
+            },
+            {
+              "name" => "id",
               "type" => "`$STRING`",
             },
             {

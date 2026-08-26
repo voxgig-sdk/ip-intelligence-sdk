@@ -247,6 +247,7 @@ returns a result `Hash` with these keys:
 | `asn_id` | Autonomous System Number of the network operator |
 | `country_code` | Two-letter ISO country code |
 | `country_name` | Full country name |
+| `id` |  |
 | `ip` | The IP address that was analyzed |
 | `is` | Array of classifications for this IP. |
 | `malicious` | Information about malicious activity if IP is flagged |
@@ -295,6 +296,7 @@ Create an instance: `api = client.Api`
 | `asn_id` | `Integer` | Autonomous System Number of the network operator |
 | `country_code` | `String` | Two-letter ISO country code |
 | `country_name` | `String` | Full country name |
+| `id` | `String` |  |
 | `ip` | `String` | The IP address that was analyzed |
 | `is` | `Array` | Array of classifications for this IP. |
 | `malicious` | `Hash` | Information about malicious activity if IP is flagged |

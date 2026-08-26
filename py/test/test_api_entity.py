@@ -48,9 +48,13 @@ class TestApiEntity:
 
         # LOAD
         api_ref01_ent = client.Api(None)
-        api_ref01_match_dt0 = {}
+        api_ref01_match_dt0 = {
+            "id": api_ref01_data["id"],
+        }
         api_ref01_data_dt0_loaded = api_ref01_ent.load(api_ref01_match_dt0, None)
-        assert api_ref01_data_dt0_loaded is not None
+        api_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(api_ref01_data_dt0_loaded))
+        assert api_ref01_data_dt0_load_result is not None
+        assert api_ref01_data_dt0_load_result["id"] == api_ref01_data["id"]
 
 
 

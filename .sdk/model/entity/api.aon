@@ -30,6 +30,11 @@ main: kit: entity: api: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "ip"
       req: true
       short: "The IP address that was analyzed"
@@ -60,6 +65,11 @@ main: kit: entity: api: {
       type: "`$INTEGER`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "api"
   op: {

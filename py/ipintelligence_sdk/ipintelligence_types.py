@@ -26,6 +26,7 @@ class ApiRequired(TypedDict):
 
 
 class Api(ApiRequired, total=False):
+    id: str
     malicious: dict
     metadata: dict
 

@@ -19,6 +19,7 @@ class Api
     public int $asn_id;
     public string $country_code;
     public string $country_name;
+    public ?string $id = null;
     public string $ip;
     public array $is;
     public ?array $malicious = null;
