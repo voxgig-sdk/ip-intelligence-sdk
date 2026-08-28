@@ -29,6 +29,7 @@ type Api struct {
 // ApiLoadMatch is the typed request payload for Api.LoadTyped.
 type ApiLoadMatch struct {
 	Id string `json:"id"`
+	ApiKey *string `json:"api_key,omitempty"`
 }
 
 // Usage is the typed data model for the usage entity.

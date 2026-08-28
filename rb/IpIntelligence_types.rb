@@ -57,8 +57,12 @@ Api = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] api_key
+#   @return [String, nil]
 ApiLoadMatch = Struct.new(
   :id,
+  :api_key,
   keyword_init: true
 )
 

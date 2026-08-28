@@ -20,6 +20,7 @@ export interface Api {
 
 export interface ApiLoadMatch {
   id: string
+  api_key?: string
 }
 
 export interface Usage {

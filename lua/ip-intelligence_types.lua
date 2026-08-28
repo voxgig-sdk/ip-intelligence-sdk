@@ -20,6 +20,7 @@
 
 ---@class ApiLoadMatch
 ---@field id string
+---@field api_key? string
 
 ---@class Usage
 ---@field account_level string

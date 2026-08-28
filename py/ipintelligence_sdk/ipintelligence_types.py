@@ -31,8 +31,12 @@ class Api(ApiRequired, total=False):
     metadata: dict
 
 
-class ApiLoadMatch(TypedDict):
+class ApiLoadMatchRequired(TypedDict):
     id: str
+
+
+class ApiLoadMatch(ApiLoadMatchRequired, total=False):
+    api_key: str
 
 
 class Usage(TypedDict):

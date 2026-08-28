@@ -31,6 +31,7 @@ class Api
 class ApiLoadMatch
 {
     public string $id;
+    public ?string $api_key = null;
 }
 
 /** Usage entity data model. */
