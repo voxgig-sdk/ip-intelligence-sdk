@@ -35,6 +35,7 @@ main: kit: entity: api: {
       type: "`$STRING`"
     }
     {
+      format: "ipv4"
       name: "ip"
       req: true
       short: "The IP address that was analyzed"
@@ -101,15 +102,19 @@ main: kit: entity: api: {
           }
           method: "GET"
           orig: "/api/{ip}"
-          parts: [
-            "api"
-            "{id}"
-          ]
           rename: {
             param: {
               ip: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "api_key"

@@ -24,6 +24,7 @@ main: kit: entity: usage: {
       type: "`$INTEGER`"
     }
     {
+      format: "date-time"
       name: "next_reset"
       req: true
       short: "ISO 8601 timestamp when the usage counter resets"
@@ -36,6 +37,7 @@ main: kit: entity: usage: {
       type: "`$INTEGER`"
     }
     {
+      format: "float"
       name: "usage_percentage"
       req: true
       short: "Percentage of monthly limit used"
@@ -51,9 +53,13 @@ main: kit: entity: usage: {
         {
           method: "GET"
           orig: "/api/usage"
-          parts: [
-            "api"
-            "usage"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "usage"
+            }
           ]
           transform: {
             req: "`reqdata`"

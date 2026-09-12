@@ -64,6 +64,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "ipv4",
             ["name"] = "ip",
             ["req"] = true,
             ["short"] = "The IP address that was analyzed",
@@ -91,6 +92,10 @@ local function make_config()
             ["short"] = "Trust rating from 0-10, where 10 is most trustworthy.",
             ["type"] = "`$INTEGER`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "api",
         ["op"] = {
@@ -123,13 +128,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/{ip}",
-                ["parts"] = {
-                  "api",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["ip"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -141,6 +150,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "{id}",
                 },
               },
             },
@@ -171,6 +184,7 @@ local function make_config()
             ["type"] = "`$INTEGER`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "next_reset",
             ["req"] = true,
             ["short"] = "ISO 8601 timestamp when the usage counter resets",
@@ -183,6 +197,7 @@ local function make_config()
             ["type"] = "`$INTEGER`",
           },
           {
+            ["format"] = "float",
             ["name"] = "usage_percentage",
             ["req"] = true,
             ["short"] = "Percentage of monthly limit used",
@@ -200,14 +215,22 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/usage",
-                ["parts"] = {
-                  "api",
-                  "usage",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "usage",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "usage",
                 },
               },
             },

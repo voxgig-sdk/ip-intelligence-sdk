@@ -1,6 +1,14 @@
 # IpIntelligence SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -85,6 +93,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "ipv4",
             "name": "ip",
             "req": True,
             "short": "The IP address that was analyzed",
@@ -113,6 +122,10 @@ def make_config():
             "type": "`$INTEGER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "api",
         "op": {
           "load": {
@@ -144,15 +157,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/{ip}",
-                "parts": [
-                  "api",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "ip": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "api_key",
@@ -163,6 +180,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -192,6 +213,7 @@ def make_config():
             "type": "`$INTEGER`",
           },
           {
+            "format": "date-time",
             "name": "next_reset",
             "req": True,
             "short": "ISO 8601 timestamp when the usage counter resets",
@@ -204,6 +226,7 @@ def make_config():
             "type": "`$INTEGER`",
           },
           {
+            "format": "float",
             "name": "usage_percentage",
             "req": True,
             "short": "Percentage of monthly limit used",
@@ -221,15 +244,23 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/usage",
-                "parts": [
-                  "api",
-                  "usage",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "usage",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "usage",
+                ],
               },
             ],
           },

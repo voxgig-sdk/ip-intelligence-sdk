@@ -91,7 +91,7 @@ function usage_basic_setup(extra)
     ["IP_INTELLIGENCE_TEST_USAGE_ENTID"] = idmap,
     ["IP_INTELLIGENCE_TEST_LIVE"] = "FALSE",
     ["IP_INTELLIGENCE_TEST_EXPLAIN"] = "FALSE",
-    ["IP_INTELLIGENCE_APIKEY"] = "NONE",
+    ["IP_INTELLIGENCE_APIKEY"] = "",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -102,6 +102,9 @@ function usage_basic_setup(extra)
 
   if env["IP_INTELLIGENCE_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
+      -- FIRST, so the generated fields below win: sdk-test-control.json's
+      -- test.client.options adds to the live client, it does not redirect it.
+      runner.live_client_options(),
       {
         apikey = env["IP_INTELLIGENCE_APIKEY"],
       },

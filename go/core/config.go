@@ -68,6 +68,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "ipv4",
 						"name": "ip",
 						"req": true,
 						"short": "The IP address that was analyzed",
@@ -95,6 +96,10 @@ func MakeConfig() map[string]any {
 						"short": "Trust rating from 0-10, where 10 is most trustworthy.",
 						"type": "`$INTEGER`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "api",
 				"op": map[string]any{
@@ -127,13 +132,17 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/{ip}",
-								"parts": []any{
-									"api",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"ip": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -145,6 +154,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"{id}",
 								},
 							},
 						},
@@ -175,6 +188,7 @@ func MakeConfig() map[string]any {
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "next_reset",
 						"req": true,
 						"short": "ISO 8601 timestamp when the usage counter resets",
@@ -187,6 +201,7 @@ func MakeConfig() map[string]any {
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "usage_percentage",
 						"req": true,
 						"short": "Percentage of monthly limit used",
@@ -204,14 +219,22 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/usage",
-								"parts": []any{
-									"api",
-									"usage",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "usage",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"usage",
 								},
 							},
 						},
@@ -223,6 +246,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

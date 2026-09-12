@@ -50,7 +50,7 @@ func TestUsageEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		usageRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.usage", setup.data)))
+		usageRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.usage")))
 		var usageRef01Data map[string]any
 		if len(usageRef01DataRaw) > 0 {
 			usageRef01Data = core.ToMapAny(usageRef01DataRaw[0][1])
@@ -97,7 +97,7 @@ func usageBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"usage01", "usage02", "usage03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -117,7 +117,7 @@ func usageBasicSetup(extra map[string]any) *entityTestSetup {
 		"IP_INTELLIGENCE_TEST_USAGE_ENTID": idmap,
 		"IP_INTELLIGENCE_TEST_LIVE":      "FALSE",
 		"IP_INTELLIGENCE_TEST_EXPLAIN":   "FALSE",
-		"IP_INTELLIGENCE_APIKEY":         "NONE",
+		"IP_INTELLIGENCE_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["IP_INTELLIGENCE_TEST_USAGE_ENTID"])
@@ -126,11 +126,23 @@ func usageBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["IP_INTELLIGENCE_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["IP_INTELLIGENCE_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewIpIntelligenceSDK(core.ToMapAny(mergedOpts))
 	}

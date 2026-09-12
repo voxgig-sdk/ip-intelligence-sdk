@@ -90,6 +90,7 @@ class IpIntelligenceConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'ipv4',
               'name' => 'ip',
               'req' => true,
               'short' => 'The IP address that was analyzed',
@@ -117,6 +118,10 @@ class IpIntelligenceConfig
               'short' => 'Trust rating from 0-10, where 10 is most trustworthy.',
               'type' => '`$INTEGER`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'api',
           'op' => [
@@ -149,13 +154,17 @@ class IpIntelligenceConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/{ip}',
-                  'parts' => [
-                    'api',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'ip' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -167,6 +176,10 @@ class IpIntelligenceConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    '{id}',
                   ],
                 ],
               ],
@@ -197,6 +210,7 @@ class IpIntelligenceConfig
               'type' => '`$INTEGER`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'next_reset',
               'req' => true,
               'short' => 'ISO 8601 timestamp when the usage counter resets',
@@ -209,6 +223,7 @@ class IpIntelligenceConfig
               'type' => '`$INTEGER`',
             ],
             [
+              'format' => 'float',
               'name' => 'usage_percentage',
               'req' => true,
               'short' => 'Percentage of monthly limit used',
@@ -226,14 +241,22 @@ class IpIntelligenceConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/usage',
-                  'parts' => [
-                    'api',
-                    'usage',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'usage',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'usage',
                   ],
                 ],
               ],

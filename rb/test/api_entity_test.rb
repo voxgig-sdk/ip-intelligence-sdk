@@ -85,7 +85,7 @@ def api_basic_setup(extra)
     "IP_INTELLIGENCE_TEST_API_ENTID" => idmap,
     "IP_INTELLIGENCE_TEST_LIVE" => "FALSE",
     "IP_INTELLIGENCE_TEST_EXPLAIN" => "FALSE",
-    "IP_INTELLIGENCE_APIKEY" => "NONE",
+    "IP_INTELLIGENCE_APIKEY" => "",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -96,6 +96,9 @@ def api_basic_setup(extra)
 
   if env["IP_INTELLIGENCE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
         "apikey" => env["IP_INTELLIGENCE_APIKEY"],
       },
