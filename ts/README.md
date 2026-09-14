@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { IpIntelligenceSDK } from '@voxgig-sdk/ip-intelligence'
+import { IpIntelligenceSDK } from '@voxgig-sdk/ip-intelligence-sdk'
 
 const client = new IpIntelligenceSDK({
   apikey: process.env.IP_INTELLIGENCE_APIKEY,
@@ -469,7 +469,7 @@ ip-intelligence/
 Import the SDK from the package root:
 
 ```ts
-import { IpIntelligenceSDK } from '@voxgig-sdk/ip-intelligence'
+import { IpIntelligenceSDK } from '@voxgig-sdk/ip-intelligence-sdk'
 ```
 
 ### Entity state

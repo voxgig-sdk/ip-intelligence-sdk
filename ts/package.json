@@ -1,5 +1,5 @@
 {
-  "name": "@voxgig-sdk/ip-intelligence",
+  "name": "@voxgig-sdk/ip-intelligence-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the IP Intelligence public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [
