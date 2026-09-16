@@ -4,7 +4,10 @@ declare(strict_types=1);
 // IpIntelligence SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class IpIntelligenceFeatures
@@ -14,8 +17,14 @@ class IpIntelligenceFeatures
         switch ($name) {
             case "base":
                 return new IpIntelligenceBaseFeature();
+            case "ratelimit":
+                return new IpIntelligenceRatelimitFeature();
+            case "retry":
+                return new IpIntelligenceRetryFeature();
             case "test":
                 return new IpIntelligenceTestFeature();
+            case "timeout":
+                return new IpIntelligenceTimeoutFeature();
             default:
                 return new IpIntelligenceBaseFeature();
         }
@@ -31,7 +40,10 @@ class IpIntelligenceFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;
