@@ -1,4 +1,4 @@
 # Entity Models
 
-@"api.aon"
-@"usage.aon"
+@"./api.aon"
+@"./usage.aon"

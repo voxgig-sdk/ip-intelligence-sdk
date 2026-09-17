@@ -105,12 +105,12 @@ local result, err = client:Api():load({ id = "test01" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/ip-intelligence-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-intelligence-sdk/releases) |
-| Python | `voxgig-sdk-ip-intelligence` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-intelligence-sdk/releases) |
-| PHP | `voxgig-sdk/ip-intelligence` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-intelligence-sdk/releases) |
+| TypeScript | `@voxgig-sdk/ip-intelligence-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-intelligence-sdk/tags) |
+| Python | `voxgig-sdk-ip-intelligence` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-intelligence-sdk/tags) |
+| PHP | `voxgig-sdk/ip-intelligence` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-intelligence-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/ip-intelligence-sdk/go` | `go get github.com/voxgig-sdk/ip-intelligence-sdk/go@latest` |
-| Ruby | `voxgig-sdk-ip-intelligence` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-intelligence-sdk/releases) |
-| Lua | `voxgig-sdk-ip-intelligence` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-intelligence-sdk/releases) |
+| Ruby | `voxgig-sdk-ip-intelligence` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-intelligence-sdk/tags) |
+| Lua | `voxgig-sdk-ip-intelligence` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-intelligence-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/ip-intelligence-sdk/go-cli` | `go install github.com/voxgig-sdk/ip-intelligence-sdk/go-cli/cmd/ip-intelligence@latest` |
 | Go MCP server | `github.com/voxgig-sdk/ip-intelligence-sdk/go-mcp` | `go get github.com/voxgig-sdk/ip-intelligence-sdk/go-mcp@latest` |
 

@@ -123,6 +123,7 @@ class Config {
 
     auth: {
       prefix: '',
+      name: 'X-API-Key',
     },
 
     headers: {
@@ -131,12 +132,12 @@ class Config {
 
     entity: {
       
-      api: {
-      },
-
-      usage: {
-      },
-
+        api: {
+        },
+  
+        usage: {
+        },
+  
     }
   }
 
