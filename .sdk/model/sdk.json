@@ -24,84 +24,160 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "api": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "asn_handle",
-              "req": true,
-              "short": "Network operator name/handle",
-              "type": "`$STRING`"
+          "fields": {
+            "asn_handle": {
+              "a": true,
+              "h": "Asn Handle",
+              "n": "asn_handle",
+              "r": true,
+              "sh": "Network operator name/handle",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "asn_id",
-              "req": true,
-              "short": "Autonomous System Number of the network operator",
-              "type": "`$INTEGER`"
+            "asn_id": {
+              "a": true,
+              "h": "Asn Id",
+              "n": "asn_id",
+              "r": true,
+              "sh": "Autonomous System Number of the network operator",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "country_code",
-              "req": true,
-              "short": "Two-letter ISO country code",
-              "type": "`$STRING`"
+            "country_code": {
+              "a": true,
+              "h": "Country Code",
+              "n": "country_code",
+              "r": true,
+              "sh": "Two-letter ISO country code",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "country_name",
-              "req": true,
-              "short": "Full country name",
-              "type": "`$STRING`"
+            "country_name": {
+              "a": true,
+              "h": "Country Name",
+              "n": "country_name",
+              "r": true,
+              "sh": "Full country name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "ipv4",
-              "name": "ip",
-              "req": true,
-              "short": "The IP address that was analyzed",
-              "type": "`$STRING`"
+            "ip": {
+              "a": true,
+              "fo": "ipv4",
+              "h": "Ip",
+              "n": "ip",
+              "r": true,
+              "sh": "The IP address that was analyzed",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "is",
-              "req": true,
-              "short": "Array of classifications for this IP.",
-              "type": "`$ARRAY`"
+            "is": {
+              "a": true,
+              "h": "Is",
+              "n": "is",
+              "r": true,
+              "sh": "Array of classifications for this IP.",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "malicious",
-              "req": false,
-              "short": "Information about malicious activity if IP is flagged",
-              "type": "`$OBJECT`"
+            "malicious": {
+              "a": true,
+              "h": "Malicious",
+              "n": "malicious",
+              "r": false,
+              "sh": "Information about malicious activity if IP is flagged",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "metadata",
-              "req": false,
-              "short": "Additional contextual information about the IP, structure varies based on classifications",
-              "type": "`$OBJECT`"
+            "metadata": {
+              "a": true,
+              "h": "Metadata",
+              "n": "metadata",
+              "r": false,
+              "sh": "Additional contextual information about the IP, structure varies based on classifications",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "trust_score",
-              "req": true,
-              "short": "Trust rating from 0-10, where 10 is most trustworthy.",
-              "type": "`$INTEGER`"
+            "trust_score": {
+              "a": true,
+              "h": "Trust Score",
+              "n": "trust_score",
+              "r": true,
+              "sh": "Trust rating from 0-10, where 10 is most trustworthy.",
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -113,46 +189,51 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/{ip}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": "1.1.1.1",
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "ip",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "1.1.1.1",
+                        "k": "param",
+                        "n": "id",
+                        "or": "ip",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "example": "zone_your_api_key_here",
-                        "kind": "query",
-                        "name": "api_key",
-                        "orig": "api_key",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "zone_your_api_key_here",
+                        "k": "query",
+                        "n": "api_key",
+                        "or": "api_key",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/{ip}",
-                    "json": "{\"operationId\":\"getIpIntelligence\",\"parameters\":[{\"description\":\"The IP address to analyze (e.g., 1.1.1.1)\",\"in\":\"path\",\"name\":\"ip\",\"required\":true,\"schema\":{\"example\":\"1.1.1.1\",\"format\":\"ipv4\",\"type\":\"string\"}},{\"description\":\"API key for authentication (alternative to X-API-Key header). API keys start with 'zone_' and are 32 characters long.\",\"in\":\"query\",\"name\":\"api_key\",\"required\":false,\"schema\":{\"example\":\"zone_your_api_key_here\",\"pattern\":\"^zone_.{28}$\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"datacenter\":{\"summary\":\"Datacenter IP (Cloudflare)\",\"value\":{\"asn_handle\":\"CLOUDFLARENET\",\"asn_id\":13335,\"country_code\":\"US\",\"country_name\":\"United States\",\"ip\":\"1.1.1.1\",\"is\":[\"datacenter\"],\"metadata\":{\"datacenter\":\"CLOUDFLARENET\"},\"trust_score\":8}},\"mobile\":{\"summary\":\"Mobile network (Vodafone UK)\",\"value\":{\"asn_handle\":\"VODAFONE-UK\",\"asn_id\":15440,\"country_code\":\"GB\",\"country_name\":\"United Kingdom\",\"ip\":\"42.113.0.1\",\"is\":[\"mobile\"],\"trust_score\":9}},\"tor_exit\":{\"summary\":\"Tor exit node\",\"value\":{\"asn_handle\":\"MilkyWan\",\"asn_id\":2027,\"country_code\":\"FR\",\"country_name\":\"France\",\"ip\":\"80.67.167.81\",\"is\":[\"malicious\",\"tor\",\"datacenter\"],\"malicious\":{\"ipsum_blacklists\":4,\"sources\":[\"abuseipdb\",\"ipsum\"]},\"metadata\":{\"datacenter\":\"MilkyWan\",\"tor\":{\"name\":\"arecoque5\",\"node_id\":\"0DC16FEAA5A5E27A9740....\",\"version\":\"0.4.8.17\"}},\"trust_score\":0}}},\"schema\":{\"properties\":{\"asn_handle\":{\"description\":\"Network operator name/handle\",\"example\":\"CLOUDFLARENET\",\"type\":\"string\"},\"asn_id\":{\"description\":\"Autonomous System Number of the network operator\",\"example\":13335,\"type\":\"integer\"},\"country_code\":{\"description\":\"Two-letter ISO country code\",\"example\":\"US\",\"maxLength\":2,\"minLength\":2,\"type\":\"string\"},\"country_name\":{\"description\":\"Full country name\",\"example\":\"United States\",\"type\":\"string\"},\"ip\":{\"description\":\"The IP address that was analyzed\",\"example\":\"1.1.1.1\",\"format\":\"ipv4\",\"type\":\"string\"},\"is\":{\"description\":\"Array of classifications for this IP. Possible values: datacenter, mobile, residential, vpn, proxy, tor, malicious, crawler, education, research, cloud, nsp, scanner, monitoring, etc. Multiple classifications are possible.\",\"example\":[\"datacenter\"],\"items\":{\"enum\":[\"datacenter\",\"mobile\",\"residential\",\"vpn\",\"proxy\",\"tor\",\"malicious\",\"crawler\",\"education\",\"research\",\"cloud\",\"nsp\",\"scanner\",\"monitoring\"],\"type\":\"string\"},\"type\":\"array\"},\"malicious\":{\"description\":\"Information about malicious activity if IP is flagged\",\"properties\":{\"ipsum_blacklists\":{\"description\":\"Number of blacklists the IP appears on\",\"type\":\"integer\"},\"sources\":{\"description\":\"Sources reporting this IP as malicious\",\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"},\"metadata\":{\"additionalProperties\":true,\"description\":\"Additional contextual information about the IP, structure varies based on classifications\",\"properties\":{\"datacenter\":{\"description\":\"Datacenter or hosting provider name\",\"type\":\"string\"},\"tor\":{\"description\":\"Tor node information if IP is a Tor exit node\",\"properties\":{\"name\":{\"description\":\"Tor node name\",\"type\":\"string\"},\"node_id\":{\"description\":\"Tor node identifier\",\"type\":\"string\"},\"version\":{\"description\":\"Tor software version\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"},\"trust_score\":{\"description\":\"Trust rating from 0-10, where 10 is most trustworthy. Scores 9-10 represent actual human users, 6-8 automated/infrastructure, 0-5 low trust/suspicious actors.\",\"example\":8,\"maximum\":10,\"minimum\":0,\"type\":\"integer\"}},\"required\":[\"ip\",\"trust_score\",\"is\",\"country_code\",\"country_name\",\"asn_id\",\"asn_handle\"],\"type\":\"object\"}}},\"description\":\"Successful response with IP intelligence data\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"description\":\"Error code for programmatic handling\",\"type\":\"string\"},\"error\":{\"description\":\"Error message describing what went wrong\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request - invalid IP address format\"},\"401\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"description\":\"Error code for programmatic handling\",\"type\":\"string\"},\"error\":{\"description\":\"Error message describing what went wrong\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Unauthorized - invalid API key\"},\"429\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"description\":\"Error code for programmatic handling\",\"type\":\"string\"},\"error\":{\"description\":\"Error message describing what went wrong\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Too many requests - rate limit exceeded\"}},\"security\":[{},{\"ApiKeyAuth\":[]},{\"ApiKeyQuery\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key authentication via header (recommended method). API keys start with 'zone_' and are 32 characters long.\",\"in\":\"header\",\"name\":\"X-API-Key\",\"type\":\"apiKey\"},\"ApiKeyQuery\":{\"description\":\"API key authentication via query parameter (alternative method).\",\"in\":\"query\",\"name\":\"api_key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/{ip}",
+                  "q": {
+                    "exist": [
+                      "api_key",
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/{ip}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "ip": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -160,13 +241,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "api_key",
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -183,52 +258,58 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "account_level",
-              "req": true,
-              "short": "Account tier level",
-              "type": "`$STRING`"
+          "fields": {
+            "account_level": {
+              "a": true,
+              "h": "Account Level",
+              "n": "account_level",
+              "r": true,
+              "sh": "Account tier level",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "current_usage",
-              "req": true,
-              "short": "Number of API requests used in the current billing period",
-              "type": "`$INTEGER`"
+            "current_usage": {
+              "a": true,
+              "h": "Current Usage",
+              "n": "current_usage",
+              "r": true,
+              "sh": "Number of API requests used in the current billing period",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "monthly_limit",
-              "req": true,
-              "short": "Total monthly request limit for this account",
-              "type": "`$INTEGER`"
+            "monthly_limit": {
+              "a": true,
+              "h": "Monthly Limit",
+              "n": "monthly_limit",
+              "r": true,
+              "sh": "Total monthly request limit for this account",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "next_reset",
-              "req": true,
-              "short": "ISO 8601 timestamp when the usage counter resets",
-              "type": "`$STRING`"
+            "next_reset": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Next Reset",
+              "n": "next_reset",
+              "r": true,
+              "sh": "ISO 8601 timestamp when the usage counter resets",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "remaining_requests",
-              "req": true,
-              "short": "Number of requests remaining in the current billing period",
-              "type": "`$INTEGER`"
+            "remaining_requests": {
+              "a": true,
+              "h": "Remaining Requests",
+              "n": "remaining_requests",
+              "r": true,
+              "sh": "Number of requests remaining in the current billing period",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "format": "float",
-              "name": "usage_percentage",
-              "req": true,
-              "short": "Percentage of monthly limit used",
-              "type": "`$NUMBER`"
+            "usage_percentage": {
+              "a": true,
+              "fo": "float",
+              "h": "Usage Percentage",
+              "n": "usage_percentage",
+              "r": true,
+              "sh": "Percentage of monthly limit used",
+              "t": "`$NUMBER`"
             }
-          ],
+          },
           "name": "usage",
           "op": {
             "load": {
@@ -236,18 +317,19 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/usage",
-                    "json": "{\"operationId\":\"getUsageStats\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"account_level\":\"developer\",\"current_usage\":5000,\"monthly_limit\":100000,\"next_reset\":\"2025-02-01T00:00:00Z\",\"remaining_requests\":95000,\"usage_percentage\":5},\"schema\":{\"properties\":{\"account_level\":{\"description\":\"Account tier level\",\"example\":\"developer\",\"type\":\"string\"},\"current_usage\":{\"description\":\"Number of API requests used in the current billing period\",\"example\":5000,\"type\":\"integer\"},\"monthly_limit\":{\"description\":\"Total monthly request limit for this account\",\"example\":100000,\"type\":\"integer\"},\"next_reset\":{\"description\":\"ISO 8601 timestamp when the usage counter resets\",\"example\":\"2025-02-01T00:00:00Z\",\"format\":\"date-time\",\"type\":\"string\"},\"remaining_requests\":{\"description\":\"Number of requests remaining in the current billing period\",\"example\":95000,\"type\":\"integer\"},\"usage_percentage\":{\"description\":\"Percentage of monthly limit used\",\"example\":5,\"format\":\"float\",\"type\":\"number\"}},\"required\":[\"account_level\",\"current_usage\",\"monthly_limit\",\"usage_percentage\",\"remaining_requests\",\"next_reset\"],\"type\":\"object\"}}},\"description\":\"Successful response with usage statistics\"},\"401\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"description\":\"Error code for programmatic handling\",\"type\":\"string\"},\"error\":{\"description\":\"Error message describing what went wrong\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Unauthorized - API key required\"}},\"security\":[{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key authentication via header (recommended method). API keys start with 'zone_' and are 32 characters long.\",\"in\":\"header\",\"name\":\"X-API-Key\",\"type\":\"apiKey\"},\"ApiKeyQuery\":{\"description\":\"API key authentication via query parameter (alternative method).\",\"in\":\"query\",\"name\":\"api_key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/usage",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/usage",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -255,8 +337,7 @@
                       "lit": "usage"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -685,19 +766,19 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "api_ref01",
                 "srcdatavar": "api_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "api01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -717,17 +798,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "usage_ref01",
                 "srcdatavar": "usage_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {

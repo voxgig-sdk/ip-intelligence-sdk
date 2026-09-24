@@ -1,0 +1,150 @@
+# Entity: api
+
+main: kit: entity: api: {
+
+  alias: field: {}
+
+  fields: {
+    asn_handle: {
+      h: "Asn Handle"
+      n: "asn_handle"
+      r: true
+      sh: "Network operator name/handle"
+      t: "`$STRING`"
+    }
+    asn_id: {
+      h: "Asn Id"
+      n: "asn_id"
+      r: true
+      sh: "Autonomous System Number of the network operator"
+      t: "`$INTEGER`"
+    }
+    country_code: {
+      h: "Country Code"
+      n: "country_code"
+      r: true
+      sh: "Two-letter ISO country code"
+      t: "`$STRING`"
+    }
+    country_name: {
+      h: "Country Name"
+      n: "country_name"
+      r: true
+      sh: "Full country name"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    ip: {
+      fo: "ipv4"
+      h: "Ip"
+      n: "ip"
+      r: true
+      sh: "The IP address that was analyzed"
+      t: "`$STRING`"
+    }
+    is: {
+      h: "Is"
+      n: "is"
+      r: true
+      sh: "Array of classifications for this IP."
+      t: "`$ARRAY`"
+    }
+    malicious: {
+      h: "Malicious"
+      n: "malicious"
+      r: false
+      sh: "Information about malicious activity if IP is flagged"
+      t: "`$OBJECT`"
+    }
+    metadata: {
+      h: "Metadata"
+      n: "metadata"
+      r: false
+      sh: "Additional contextual information about the IP, structure varies based on classifications"
+      t: "`$OBJECT`"
+    }
+    trust_score: {
+      h: "Trust Score"
+      n: "trust_score"
+      r: true
+      sh: "Trust rating from 0-10, where 10 is most trustworthy."
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/{ip}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "1.1.1.1"
+                k: "param"
+                n: "id"
+                or: "ip"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "zone_your_api_key_here"
+                k: "query"
+                n: "api_key"
+                or: "api_key"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/{ip}"
+          q: {
+            exist: [
+              "api_key"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              ip: "id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

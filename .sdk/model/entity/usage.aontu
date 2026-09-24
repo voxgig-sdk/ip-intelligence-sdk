@@ -1,0 +1,86 @@
+# Entity: usage
+
+main: kit: entity: usage: {
+
+  alias: field: {}
+
+  fields: {
+    account_level: {
+      h: "Account Level"
+      n: "account_level"
+      r: true
+      sh: "Account tier level"
+      t: "`$STRING`"
+    }
+    current_usage: {
+      h: "Current Usage"
+      n: "current_usage"
+      r: true
+      sh: "Number of API requests used in the current billing period"
+      t: "`$INTEGER`"
+    }
+    monthly_limit: {
+      h: "Monthly Limit"
+      n: "monthly_limit"
+      r: true
+      sh: "Total monthly request limit for this account"
+      t: "`$INTEGER`"
+    }
+    next_reset: {
+      fo: "date-time"
+      h: "Next Reset"
+      n: "next_reset"
+      r: true
+      sh: "ISO 8601 timestamp when the usage counter resets"
+      t: "`$STRING`"
+    }
+    remaining_requests: {
+      h: "Remaining Requests"
+      n: "remaining_requests"
+      r: true
+      sh: "Number of requests remaining in the current billing period"
+      t: "`$INTEGER`"
+    }
+    usage_percentage: {
+      fo: "float"
+      h: "Usage Percentage"
+      n: "usage_percentage"
+      r: true
+      sh: "Percentage of monthly limit used"
+      t: "`$NUMBER`"
+    }
+  }
+
+  name: "usage"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/usage"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/usage"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "usage"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

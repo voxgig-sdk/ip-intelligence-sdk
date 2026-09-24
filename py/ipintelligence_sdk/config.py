@@ -121,60 +121,70 @@ def make_config():
         "fields": [
           {
             "name": "asn_handle",
+            "title": "Asn Handle",
+            "type": "`$STRING`",
             "req": True,
             "short": "Network operator name/handle",
-            "type": "`$STRING`",
           },
           {
             "name": "asn_id",
+            "title": "Asn Id",
+            "type": "`$INTEGER`",
             "req": True,
             "short": "Autonomous System Number of the network operator",
-            "type": "`$INTEGER`",
           },
           {
             "name": "country_code",
+            "title": "Country Code",
+            "type": "`$STRING`",
             "req": True,
             "short": "Two-letter ISO country code",
-            "type": "`$STRING`",
           },
           {
             "name": "country_name",
+            "title": "Country Name",
+            "type": "`$STRING`",
             "req": True,
             "short": "Full country name",
-            "type": "`$STRING`",
           },
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
           {
-            "format": "ipv4",
             "name": "ip",
+            "title": "Ip",
+            "type": "`$STRING`",
             "req": True,
             "short": "The IP address that was analyzed",
-            "type": "`$STRING`",
+            "format": "ipv4",
           },
           {
             "name": "is",
+            "title": "Is",
+            "type": "`$ARRAY`",
             "req": True,
             "short": "Array of classifications for this IP.",
-            "type": "`$ARRAY`",
           },
           {
             "name": "malicious",
-            "short": "Information about malicious activity if IP is flagged",
+            "title": "Malicious",
             "type": "`$OBJECT`",
+            "short": "Information about malicious activity if IP is flagged",
           },
           {
             "name": "metadata",
-            "short": "Additional contextual information about the IP, structure varies based on classifications",
+            "title": "Metadata",
             "type": "`$OBJECT`",
+            "short": "Additional contextual information about the IP, structure varies based on classifications",
           },
           {
             "name": "trust_score",
+            "title": "Trust Score",
+            "type": "`$INTEGER`",
             "req": True,
             "short": "Trust rating from 0-10, where 10 is most trustworthy.",
-            "type": "`$INTEGER`",
           },
         ],
         "id": {
@@ -188,35 +198,9 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "example": "1.1.1.1",
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "ip",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                  "query": [
-                    {
-                      "example": "zone_your_api_key_here",
-                      "kind": "query",
-                      "name": "api_key",
-                      "orig": "api_key",
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/{ip}",
-                "rename": {
-                  "param": {
-                    "ip": "id",
-                  },
-                },
                 "segments": [
                   {
                     "lit": "api",
@@ -225,20 +209,46 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "api",
+                  "{id}",
+                ],
+                "rename": {
+                  "param": {
+                    "ip": "id",
+                  },
+                },
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "ip",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                      "example": "1.1.1.1",
+                    },
+                  ],
+                  "query": [
+                    {
+                      "name": "api_key",
+                      "orig": "api_key",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "zone_your_api_key_here",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "api_key",
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "api",
-                  "{id}",
-                ],
               },
             ],
           },
@@ -251,41 +261,47 @@ def make_config():
         "fields": [
           {
             "name": "account_level",
+            "title": "Account Level",
+            "type": "`$STRING`",
             "req": True,
             "short": "Account tier level",
-            "type": "`$STRING`",
           },
           {
             "name": "current_usage",
+            "title": "Current Usage",
+            "type": "`$INTEGER`",
             "req": True,
             "short": "Number of API requests used in the current billing period",
-            "type": "`$INTEGER`",
           },
           {
             "name": "monthly_limit",
+            "title": "Monthly Limit",
+            "type": "`$INTEGER`",
             "req": True,
             "short": "Total monthly request limit for this account",
-            "type": "`$INTEGER`",
           },
           {
-            "format": "date-time",
             "name": "next_reset",
+            "title": "Next Reset",
+            "type": "`$STRING`",
             "req": True,
             "short": "ISO 8601 timestamp when the usage counter resets",
-            "type": "`$STRING`",
+            "format": "date-time",
           },
           {
             "name": "remaining_requests",
+            "title": "Remaining Requests",
+            "type": "`$INTEGER`",
             "req": True,
             "short": "Number of requests remaining in the current billing period",
-            "type": "`$INTEGER`",
           },
           {
-            "format": "float",
             "name": "usage_percentage",
+            "title": "Usage Percentage",
+            "type": "`$NUMBER`",
             "req": True,
             "short": "Percentage of monthly limit used",
-            "type": "`$NUMBER`",
+            "format": "float",
           },
         ],
         "name": "usage",
@@ -295,7 +311,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/usage",
@@ -307,15 +322,17 @@ def make_config():
                     "lit": "usage",
                   },
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "api",
                   "usage",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {},
+                "select": {},
               },
             ],
           },

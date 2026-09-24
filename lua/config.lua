@@ -92,60 +92,70 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "asn_handle",
+            ["title"] = "Asn Handle",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "Network operator name/handle",
-            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "asn_id",
+            ["title"] = "Asn Id",
+            ["type"] = "`$INTEGER`",
             ["req"] = true,
             ["short"] = "Autonomous System Number of the network operator",
-            ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "country_code",
+            ["title"] = "Country Code",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "Two-letter ISO country code",
-            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "country_name",
+            ["title"] = "Country Name",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "Full country name",
-            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "id",
+            ["title"] = "Id",
             ["type"] = "`$STRING`",
           },
           {
-            ["format"] = "ipv4",
             ["name"] = "ip",
+            ["title"] = "Ip",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "The IP address that was analyzed",
-            ["type"] = "`$STRING`",
+            ["format"] = "ipv4",
           },
           {
             ["name"] = "is",
+            ["title"] = "Is",
+            ["type"] = "`$ARRAY`",
             ["req"] = true,
             ["short"] = "Array of classifications for this IP.",
-            ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "malicious",
-            ["short"] = "Information about malicious activity if IP is flagged",
+            ["title"] = "Malicious",
             ["type"] = "`$OBJECT`",
+            ["short"] = "Information about malicious activity if IP is flagged",
           },
           {
             ["name"] = "metadata",
-            ["short"] = "Additional contextual information about the IP, structure varies based on classifications",
+            ["title"] = "Metadata",
             ["type"] = "`$OBJECT`",
+            ["short"] = "Additional contextual information about the IP, structure varies based on classifications",
           },
           {
             ["name"] = "trust_score",
+            ["title"] = "Trust Score",
+            ["type"] = "`$INTEGER`",
             ["req"] = true,
             ["short"] = "Trust rating from 0-10, where 10 is most trustworthy.",
-            ["type"] = "`$INTEGER`",
           },
         },
         ["id"] = {
@@ -159,35 +169,9 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["example"] = "1.1.1.1",
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "ip",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                  ["query"] = {
-                    {
-                      ["example"] = "zone_your_api_key_here",
-                      ["kind"] = "query",
-                      ["name"] = "api_key",
-                      ["orig"] = "api_key",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/{ip}",
-                ["rename"] = {
-                  ["param"] = {
-                    ["ip"] = "id",
-                  },
-                },
                 ["segments"] = {
                   {
                     ["lit"] = "api",
@@ -196,19 +180,45 @@ local function make_config()
                     ["var"] = "id",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "api_key",
-                    "id",
+                ["parts"] = {
+                  "api",
+                  "{id}",
+                },
+                ["rename"] = {
+                  ["param"] = {
+                    ["ip"] = "id",
                   },
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "api",
-                  "{id}",
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "ip",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                      ["example"] = "1.1.1.1",
+                    },
+                  },
+                  ["query"] = {
+                    {
+                      ["name"] = "api_key",
+                      ["orig"] = "api_key",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["example"] = "zone_your_api_key_here",
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "api_key",
+                    "id",
+                  },
                 },
               },
             },
@@ -222,41 +232,47 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "account_level",
+            ["title"] = "Account Level",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "Account tier level",
-            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "current_usage",
+            ["title"] = "Current Usage",
+            ["type"] = "`$INTEGER`",
             ["req"] = true,
             ["short"] = "Number of API requests used in the current billing period",
-            ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "monthly_limit",
+            ["title"] = "Monthly Limit",
+            ["type"] = "`$INTEGER`",
             ["req"] = true,
             ["short"] = "Total monthly request limit for this account",
-            ["type"] = "`$INTEGER`",
           },
           {
-            ["format"] = "date-time",
             ["name"] = "next_reset",
+            ["title"] = "Next Reset",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "ISO 8601 timestamp when the usage counter resets",
-            ["type"] = "`$STRING`",
+            ["format"] = "date-time",
           },
           {
             ["name"] = "remaining_requests",
+            ["title"] = "Remaining Requests",
+            ["type"] = "`$INTEGER`",
             ["req"] = true,
             ["short"] = "Number of requests remaining in the current billing period",
-            ["type"] = "`$INTEGER`",
           },
           {
-            ["format"] = "float",
             ["name"] = "usage_percentage",
+            ["title"] = "Usage Percentage",
+            ["type"] = "`$NUMBER`",
             ["req"] = true,
             ["short"] = "Percentage of monthly limit used",
-            ["type"] = "`$NUMBER`",
+            ["format"] = "float",
           },
         },
         ["name"] = "usage",
@@ -266,7 +282,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/usage",
@@ -278,15 +293,17 @@ local function make_config()
                     ["lit"] = "usage",
                   },
                 },
-                ["select"] = {},
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
                 ["parts"] = {
                   "api",
                   "usage",
                 },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },

@@ -1,7 +1,7 @@
 // Typed models for the IpIntelligence SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,16 +14,6 @@ import (
 
 // Api is the typed data model for the api entity.
 type Api struct {
-	AsnHandle string `json:"asn_handle"`
-	AsnId int `json:"asn_id"`
-	CountryCode string `json:"country_code"`
-	CountryName string `json:"country_name"`
-	Id *string `json:"id,omitempty"`
-	Ip string `json:"ip"`
-	Is []any `json:"is"`
-	Malicious *map[string]any `json:"malicious,omitempty"`
-	Metadata *map[string]any `json:"metadata,omitempty"`
-	TrustScore int `json:"trust_score"`
 }
 
 // ApiLoadMatch is the typed request payload for Api.LoadTyped.
@@ -34,12 +24,6 @@ type ApiLoadMatch struct {
 
 // Usage is the typed data model for the usage entity.
 type Usage struct {
-	AccountLevel string `json:"account_level"`
-	CurrentUsage int `json:"current_usage"`
-	MonthlyLimit int `json:"monthly_limit"`
-	NextReset string `json:"next_reset"`
-	RemainingRequests int `json:"remaining_requests"`
-	UsagePercentage float64 `json:"usage_percentage"`
 }
 
 // UsageLoadMatch is the typed request payload for Usage.LoadTyped.
