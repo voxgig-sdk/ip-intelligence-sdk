@@ -1,5 +1,5 @@
 {
-  "name": "voxgig-sdk/ip-intelligence",
+  "name": "voxgig-sdk/ip-intelligence-sdk",
   "description": "Unofficial generated PHP SDK for the IP Intelligence public API. Not affiliated with or endorsed by the upstream API provider.",
   "type": "library",
   "keywords": ["voxgig", "sdk", "generated-sdk", "openapi", "api-client", "ip-intelligence"],
